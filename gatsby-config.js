@@ -1,39 +1,50 @@
 /* eslint-disable no-useless-escape */
-const path = require(`path`)
+const path = require(`path`);
 
-const config = require(`./src/utils/siteConfig`)
-const generateRSSFeed = require(`./src/utils/rss/generate-feed`)
+const config = require(`./src/utils/siteConfig`);
+const generateRSSFeed = require(`./src/utils/rss/generate-feed`);
 
-let ghostConfig
+let ghostConfig;
 
 try {
-    ghostConfig = require(`./.ghost`)
+    ghostConfig = require(`./.ghost`);
 } catch (e) {
     ghostConfig = {
         production: {
             apiUrl: process.env.GHOST_API_URL,
             contentApiKey: process.env.GHOST_CONTENT_API_KEY,
         },
-    }
+    };
 } finally {
-    const { apiUrl, contentApiKey } = process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production
+    const { apiUrl, contentApiKey } =
+        process.env.NODE_ENV === `development`
+            ? ghostConfig.development
+            : ghostConfig.production;
 
     if (!apiUrl || !contentApiKey || contentApiKey.match(/<key>/)) {
-        throw new Error(`GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build. Check the README.`) // eslint-disable-line
+        throw new Error(
+            `GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build. Check the README.`
+        ); // eslint-disable-line
     }
 }
 
-if (process.env.NODE_ENV === `production` && config.siteUrl === `http://localhost:8000` && !process.env.SITEURL) {
-    throw new Error(`siteUrl can't be localhost and needs to be configured in siteConfig. Check the README.`) // eslint-disable-line
+if (
+    process.env.NODE_ENV === `production` &&
+    config.siteUrl === `http://localhost:8000` &&
+    !process.env.SITEURL
+) {
+    throw new Error(
+        `siteUrl can't be localhost and needs to be configured in siteConfig. Check the README.`
+    ); // eslint-disable-line
 }
 
 /**
-* This is the place where you can tell Gatsby which plugins to use
-* and set them up the way you want.
-*
-* Further info 👉🏼 https://www.gatsbyjs.org/docs/gatsby-config/
-*
-*/
+ * This is the place where you can tell Gatsby which plugins to use
+ * and set them up the way you want.
+ *
+ * Further info 👉🏼 https://www.gatsbyjs.org/docs/gatsby-config/
+ *
+ */
 module.exports = {
     siteMetadata: {
         siteUrl: process.env.SITEURL || config.siteUrl,
@@ -129,9 +140,7 @@ module.exports = {
                     }
                 }
              `,
-                feeds: [
-                    generateRSSFeed(config),
-                ],
+                feeds: [generateRSSFeed(config)],
             },
         },
         {
@@ -210,13 +219,24 @@ module.exports = {
         `gatsby-plugin-offline`,
         `gatsby-plugin-dark-mode`,
         {
-            resolve: `gatsby-plugin-google-fonts`,
+            resolve: `gatsby-plugin-webfonts`,
             options: {
-                fonts: [
-                    `PT Serif\:400, 700, 400i`,
-                    `Inter\:400,500,600,700`, // you can also specify font weights and styles
-                ],
-                display: `swap`,
+                fonts: {
+                    google: [
+                        {
+                            family: `PT Serif`,
+                            variants: [`400`, `700`, `400i`],
+                            fontDisplay: `swap`,
+                            strategy: config.fontStrategy,
+                        },
+                        {
+                            family: `Inter`,
+                            variants: [`400`, `500`, `600`, `700`],
+                            fontDisplay: `swap`,
+                            strategy: config.fontStrategy,
+                        },
+                    ],
+                },
             },
         },
         {
@@ -224,10 +244,10 @@ module.exports = {
             options: {
                 // Condition for selecting an existing GraphQL node (optional)
                 // If not set, the transformer operates on file nodes.
-                filter: node => node.internal.type === `GhostPost`,
+                filter: (node) => node.internal.type === `GhostPost`,
                 // Only needed when using filter (optional, default: node.html)
                 // Source location of the html to be transformed
-                source: node => node.html,
+                source: (node) => node.html,
                 // Additional fields of the sourced node can be added here (optional)
                 // These fields are then available on the htmlNode on `htmlNode.context`
                 contextFields: [],
@@ -350,4 +370,4 @@ module.exports = {
             },
         },
     ],
-}
+};
