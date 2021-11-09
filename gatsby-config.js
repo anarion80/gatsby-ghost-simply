@@ -210,13 +210,24 @@ module.exports = {
         `gatsby-plugin-offline`,
         `gatsby-plugin-dark-mode`,
         {
-            resolve: `gatsby-plugin-google-fonts`,
+            resolve: `gatsby-plugin-webfonts`,
             options: {
-                fonts: [
-                    `PT Serif\:400, 700, 400i`,
-                    `Inter\:400,500,600,700`, // you can also specify font weights and styles
-                ],
-                display: `swap`,
+                fonts: {
+                    google: [
+                        {
+                            family: `PT Serif`,
+                            variants: [`400`, `700`, `400i`],
+                            fontDisplay: `swap`,
+                            strategy: config.fontStrategy,
+                        },
+                        {
+                            family: `Inter`,
+                            variants: [`400`, `500`, `600`, `700`],
+                            fontDisplay: `swap`,
+                            strategy: config.fontStrategy,
+                        },
+                    ],
+                },
             },
         },
         {
