@@ -2,7 +2,7 @@
   "name": "gatsby-ghost-simply",
   "description": "Ghost Simple theme for Gatsby",
   "version": "0.0.1",
-  "license": "GPLv3",
+  "license": "GPL-3.0-only",
   "author": "Anarion Dunedain",
   "homepage": "https://github.com/anarion80/gatsby-ghost-simply",
   "repository": {
