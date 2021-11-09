@@ -1,41 +1,30 @@
 /* eslint-disable no-useless-escape */
-const path = require(`path`);
+const path = require(`path`)
 
-const config = require(`./src/utils/siteConfig`);
-const generateRSSFeed = require(`./src/utils/rss/generate-feed`);
+const config = require(`./src/utils/siteConfig`)
+const generateRSSFeed = require(`./src/utils/rss/generate-feed`)
 
-let ghostConfig;
+let ghostConfig
 
 try {
-    ghostConfig = require(`./.ghost`);
+    ghostConfig = require(`./.ghost`)
 } catch (e) {
     ghostConfig = {
         production: {
             apiUrl: process.env.GHOST_API_URL,
             contentApiKey: process.env.GHOST_CONTENT_API_KEY,
         },
-    };
+    }
 } finally {
-    const { apiUrl, contentApiKey } =
-        process.env.NODE_ENV === `development`
-            ? ghostConfig.development
-            : ghostConfig.production;
+    const { apiUrl, contentApiKey } = process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production
 
     if (!apiUrl || !contentApiKey || contentApiKey.match(/<key>/)) {
-        throw new Error(
-            `GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build. Check the README.`
-        ); // eslint-disable-line
+        throw new Error(`GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build. Check the README.`) // eslint-disable-line
     }
 }
 
-if (
-    process.env.NODE_ENV === `production` &&
-    config.siteUrl === `http://localhost:8000` &&
-    !process.env.SITEURL
-) {
-    throw new Error(
-        `siteUrl can't be localhost and needs to be configured in siteConfig. Check the README.`
-    ); // eslint-disable-line
+if (process.env.NODE_ENV === `production` && config.siteUrl === `http://localhost:8000` && !process.env.SITEURL) {
+    throw new Error(`siteUrl can't be localhost and needs to be configured in siteConfig. Check the README.`) // eslint-disable-line
 }
 
 /**
@@ -140,7 +129,9 @@ module.exports = {
                     }
                 }
              `,
-                feeds: [generateRSSFeed(config)],
+                feeds: [
+                    generateRSSFeed(config),
+                ],
             },
         },
         {
@@ -244,10 +235,10 @@ module.exports = {
             options: {
                 // Condition for selecting an existing GraphQL node (optional)
                 // If not set, the transformer operates on file nodes.
-                filter: (node) => node.internal.type === `GhostPost`,
+                filter: node => node.internal.type === `GhostPost`,
                 // Only needed when using filter (optional, default: node.html)
                 // Source location of the html to be transformed
-                source: (node) => node.html,
+                source: node => node.html,
                 // Additional fields of the sourced node can be added here (optional)
                 // These fields are then available on the htmlNode on `htmlNode.context`
                 contextFields: [],
@@ -370,4 +361,4 @@ module.exports = {
             },
         },
     ],
-};
+}
