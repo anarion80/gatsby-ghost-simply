@@ -7,7 +7,7 @@ import { Layout } from '../../components/common'
 import { MetaData } from '../../components/common/meta'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { useLang, getTranslation } from '../../utils/use-lang'
-import relativeUrl from '../../utils/relativeUrl'
+import { relativeUrl } from "../../utils/relativeUrl"
 import * as containerStyles from "./custom-archive-tags.module.css"
 
 /**

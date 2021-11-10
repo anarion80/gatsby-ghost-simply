@@ -64,7 +64,7 @@ export const pageQuery = graphql`
   query GhostPostSidebarQuery($limit: Int!, $skip: Int!) {
     allGhostPost(
         sort: { order: DESC, fields: [published_at] },
-        filter: {tags: {elemMatch: {name: {nin: ["#podcast","#portfolio","#kusi-doc"]}}}},
+        filter: {tags: {elemMatch: {name: {nin: ["#podcast","#portfolio","#custom-kusi-doc"]}}}},
         limit: $limit,
         skip: $skip
     ) {

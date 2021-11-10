@@ -1,5 +1,5 @@
 import siteConfig from "./siteConfig"
-import relativeUrl from "./relativeUrl"
+import { relativeUrl } from "../../utils/relativeUrl"
 
 export default function absoluteUrl(url) {
     return `${siteConfig.siteUrl}${relativeUrl(url)}`

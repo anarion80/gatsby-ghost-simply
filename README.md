@@ -16,7 +16,7 @@ Rewritten from Handlebars theme to React/Gatsby.
 - [Social accounts link](https://godofredo.ninja/ghost-theme/simply/settings/#socialmedia)
 - [PrismJS syntax highlighting](https://prismjs.com/index.html#supported-languages) - basic only
 - Different Home Page variants and Post formats
-  - Post Format
+  - Post Format (:warning: use internal tags and not `custom_template` field!)
     - [Post Default](https://godofredo.ninja/ghost-theme/simply/post-format/#post-default)
     - [Post Full](https://godofredo.ninja/ghost-theme/simply/post-format/#post-full)
     - [Post Wide](https://godofredo.ninja/ghost-theme/simply/post-format/#post-wide)
@@ -32,15 +32,15 @@ Rewritten from Handlebars theme to React/Gatsby.
     - Footer Default
     - Footer Dark
     - Footer Not Menu Secondary
-- Archive
+- Archive (:warning: use internal tags and not `custom_template` field!)
     - [Authors Page](https://godofredo.ninja/ghost-theme/simply/authors-and-tags-page/#authors-page)
     - [Tags Page](https://godofredo.ninja/ghost-theme/simply/authors-and-tags-page/#tags-page)
 - Page
-    - [Contact](https://godofredo.ninja/ghost-theme/simply/contact-page/)
-    - [Kusi Doc](https://godofredo.ninja/ghost-theme/simply/kusi-doc/) for the documentation of your project
+    - [Contact](https://godofredo.ninja/ghost-theme/simply/contact-page/) (:warning: use internal tags and not `custom_template` field!)
+    - [Kusi Doc](https://godofredo.ninja/ghost-theme/simply/kusi-doc/) for the documentation of your project (:warning: use internal tags and not `custom_template` field!)
     - 404
-    - [Podcasts Page](https://godofredo.ninja/ghost-theme/simply/podcasts-page/)
-    - [Portfolio Page](https://godofredo.ninja/ghost-theme/simply/portfolio-page/)
+    - [Podcasts Page](https://godofredo.ninja/ghost-theme/simply/podcasts-page/) (:warning: no need to create the page, just use internal tags on the post)
+    - [Portfolio Page](https://godofredo.ninja/ghost-theme/simply/portfolio-page/) (:warning: no need to create the page, just use internal tags on the post)
 - Support for [different Languages](https://godofredo.ninja/ghost-theme/simply/languages)
 - Related Articles
 - Social share buttons support for posts
@@ -92,7 +92,7 @@ yarn
 
 # 🏃‍♂️ Running
 
-Start the development server. You now have a Gatsby site pulling content from headless Ghost. Please ensure you have the [Simply Ghost Theme](https://github.com/godofredoninja/simply) installed in your Ghost instance, including all the Routes if you want to use all the features.
+Start the development server. You now have a Gatsby site pulling content from headless Ghost. You do not need to have original [Simply Ghost Theme](https://github.com/godofredoninja/simply) installed in your Ghost instance, nor have any additional Routes set up there.
 
 ```bash
 gatsby develop
@@ -157,6 +157,8 @@ Finally, configure your desired URL in `siteConfig.js`, so links (e. g. canonica
     },
 }
 ```
+
+To use custom post templates, add a particular internal tag to the post (i.e. `#custom-post-wide`, `#custom-kusi-doc`, etc).
 
 Demo and the repo is the "maximum version" with all possible types of Home Page variants, Post Templates, Portfolio, Docs, etc. Adjust/remove as needed.
 

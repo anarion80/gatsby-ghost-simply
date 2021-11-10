@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 
 import { Layout, Pagination } from '../../components/common'
 import { Link } from 'gatsby'
-import relativeUrl from '../../utils/relativeUrl'
+import { relativeUrl } from "../../utils/relativeUrl"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { MetaData } from '../../components/common/meta'
 import DateTimeComponent from '../../components/common/DateTimeComponent'
@@ -140,7 +140,7 @@ export const pageQuery = graphql`
   query GhostPostMediumSidebarQuery($limit: Int!, $skip: Int!) {
     allGhostPost(
         sort: { order: DESC, fields: [published_at] },
-        filter: {tags: {elemMatch: {name: {nin: ["#podcast","#portfolio","#kusi-doc"]}}}},
+        filter: {tags: {elemMatch: {name: {nin: ["#podcast","#portfolio","#custom-kusi-doc"]}}}},
         limit: $limit,
         skip: $skip
     ) {

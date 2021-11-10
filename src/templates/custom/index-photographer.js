@@ -6,7 +6,7 @@ import { Layout } from '../../components/common'
 import { Link } from "gatsby"
 import { MetaData } from '../../components/common/meta'
 import PrimaryTag from "../../components/common/PrimaryTag"
-import relativeUrl from "../../utils/relativeUrl"
+import { relativeUrl } from "../../utils/relativeUrl"
 import DateTimeComponent from "../../components/common/DateTimeComponent"
 import MediaCover from "../../components/common/MediaCover"
 import Author from '../../components/common/Author'
@@ -136,7 +136,7 @@ export const pageQuery = graphql`
   query GhostPostPhotographerQuery($limit: Int!, $skip: Int!) {
     allPosts: allGhostPost(
         sort: { order: DESC, fields: [published_at] },
-        filter: {tags: {elemMatch: {name: {nin: ["#podcast","#portfolio","#kusi-doc"]}}}},
+        filter: {tags: {elemMatch: {name: {nin: ["#podcast","#portfolio","#custom-kusi-doc"]}}}},
         limit: $limit,
         skip: $skip
     ) {

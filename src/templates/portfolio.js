@@ -5,6 +5,7 @@ import { Layout } from '../components/common'
 import { MetaData } from '../components/common/meta'
 import StoryPortfolio from "../components/common/story/StoryPortfolio"
 import { useLang, getTranslation } from '../utils/use-lang'
+import { resolveUrl } from "../utils/relativeUrl"
 
 /**
 * Portfolio Collection view (/portfolio)
@@ -12,7 +13,7 @@ import { useLang, getTranslation } from '../utils/use-lang'
 * This file renders a collection of posts tagged with #portfolio tag.
 *
 */
-const Portfolio = ({ data, location }) => {
+const Portfolio = ({ data, location, pageContext }) => {
     //const page = data.ghostPage
     const t = getTranslation(useLang())
     const posts = data.allGhostPost.edges
@@ -82,11 +83,13 @@ const Portfolio = ({ data, location }) => {
                     <div className="mx-auto max-w-1100 feed-entry-wrap">
                         <div className="row flex-row justify-center">
 
-                            {posts.map(item => (
-                                <div className="col s12 m6 l4 js-filter-items" data-id={ item.node.primary_tag && item.node.primary_tag.slug} key={item.node.id}>
-                                    <StoryPortfolio post={item.node} />
-                                </div>
-                            ))}
+                            {posts.map((item) => {
+                                const post = item.node
+                                post.url = resolveUrl(pageContext.collectionPath, post.url)
+                                return (<div className="col s12 m6 l4 js-filter-items" data-id={ item.node.primary_tag && item.node.primary_tag.slug} key={item.node.id}>
+                                    <StoryPortfolio post={post} />
+                                </div>)
+                            })}
 
                         </div>
                     </div>
@@ -101,7 +104,7 @@ Portfolio.propTypes = {
         allGhostPost: PropTypes.object.isRequired,
     }).isRequired,
     location: PropTypes.object.isRequired,
-    pageContext: PropTypes.object,
+    pageContext: PropTypes.object.isRequired,
 }
 
 export default Portfolio

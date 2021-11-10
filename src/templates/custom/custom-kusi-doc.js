@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet'
 import { Layout } from '../../components/common'
 import { MetaData } from '../../components/common/meta'
 import { useLang, getTranslation } from '../../utils/use-lang'
-import relativeUrl from '../../utils/relativeUrl'
+import { relativeUrl, resolveUrl } from "../../utils/relativeUrl"
 import { Link } from 'gatsby'
 
 /**
@@ -24,6 +24,13 @@ const PostDoc = ({ data, location, pageContext }) => {
         breadcrumb: { crumbs },
     } = pageContext
     const capitalize = s => s && s[0].toUpperCase() + s.slice(1)
+    post.url = resolveUrl(pageContext.collectionPath, post.url)
+    if (previousPost) {
+        previousPost.url = resolveUrl(pageContext.collectionPath, previousPost.url)
+    }
+    if (nextPost) {
+        nextPost.url = resolveUrl(pageContext.collectionPath, nextPost.url)
+    }
 
     const setup = () => {
     // Return if no post box exists
@@ -119,18 +126,22 @@ const PostDoc = ({ data, location, pageContext }) => {
 
                                     {{!-- {{#get "posts" filter="tags:{{primary_tag.slug}}" limit="all" order="published_at asc"}} --}} */}
 
-                                    {posts.map(item => (
-                                        <li itemProp="name" role="menuitem" key={item.node.id}>
-                                            <Link
-                                                to={relativeUrl(item.node.url)}
-                                                className="menu-link p-2 flex hover:text-primary relative transition-colors duration-200"
-                                                activeClassName="is-active text-primary pl-4 font-medium"
-                                                itemProp="url">
-                                                <span className="menu-link-bg rounded-md absolute inset-0 bg-primary opacity-0"></span>
-                                                <span className="relative">{item.node.title}</span>
-                                            </Link>
-                                        </li>
-                                    ))}
+                                    {posts.map((item) => {
+                                        const post = item.node
+                                        post.url = resolveUrl(pageContext.collectionPath, post.url)
+                                        return (
+                                            <li itemProp="name" role="menuitem" key={item.node.id}>
+                                                <Link
+                                                    to={relativeUrl(item.node.url)}
+                                                    className="menu-link p-2 flex hover:text-primary relative transition-colors duration-200"
+                                                    activeClassName="is-active text-primary pl-4 font-medium"
+                                                    itemProp="url">
+                                                    <span className="menu-link-bg rounded-md absolute inset-0 bg-primary opacity-0"></span>
+                                                    <span className="relative">{item.node.title}</span>
+                                                </Link>
+                                            </li>
+                                        )
+                                    })}
                                 </ul>
                             </nav>
                         </div>
@@ -212,6 +223,7 @@ PostDoc.propTypes = {
             id: PropTypes.string.isRequired,
             tags: PropTypes.array,
             og_description: PropTypes.string,
+            url: PropTypes.string.isRequired,
         }).isRequired,
         nextPost: PropTypes.shape({
             url: PropTypes.string,
@@ -344,7 +356,7 @@ export const postQuery = graphql`
         }
         allGhostPost(
             sort: { order: ASC, fields: [published_at] },
-            filter: {tags: {elemMatch: {name: {in: ["#kusi-doc"]}}}}
+            filter: {tags: {elemMatch: {name: {in: ["#custom-kusi-doc"]}}}}
         ) {
             edges {
                 node {

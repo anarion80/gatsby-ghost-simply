@@ -11,12 +11,15 @@ const typeDefault = function typeDefault(type) {
     }
 }
 const getCustomTemplate = function getCustomTemplate(node) {
-    if (node.slug === `docs`) {
-        return path.resolve(`./src/templates/custom/custom-kusi-home.js`)
-    } else if (node.custom_template === null || node.custom_template === undefined || !fs.existsSync(`./src/templates/custom/${node.custom_template}.js`)) {
+    if (node.tags.length === 0) {
         return typeDefault(node.internal.type)
     } else {
-        return path.resolve(`./src/templates/custom/${node.custom_template}.js`)
+        const template = node.tags.filter(tag => tag.name.includes(`#custom-`)).length > 0 && node.tags.filter(tag => tag.name.includes(`#custom-`))[0].name.slice(1)
+        if (template === null || template === undefined || !fs.existsSync(`./src/templates/custom/${template}.js`)) {
+            return typeDefault(node.internal.type)
+        } else {
+            return path.resolve(`./src/templates/custom/${template}.js`)
+        }
     }
 }
 

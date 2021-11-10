@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import relativeUrl from '../../../utils/relativeUrl'
+import { relativeUrl } from "../../../utils/relativeUrl"
 
 const SidebarPostCard = ({ widgetTitle, widgetPosts }) => (
     <div className="sidebar-items mb-8 lg:sticky lg:top-32">

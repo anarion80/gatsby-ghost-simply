@@ -7,6 +7,7 @@ import { MetaData } from '../../components/common/meta'
 import ArticleBody from '../../components/article/ArticleBody'
 import ArticleRelated from '../../components/article/ArticleRelated'
 import ArticleHeader from '../../components/article/ArticleHeader'
+import { resolveUrl } from '../../utils/relativeUrl'
 
 /**
 * Single post view (/:slug)
@@ -14,12 +15,19 @@ import ArticleHeader from '../../components/article/ArticleHeader'
 * This file renders a single post and loads all the content.
 *
 */
-const PostNotImage = ({ data, location }) => {
+const PostNotImage = ({ data, location, pageContext }) => {
     const post = data.currentPost
     const prevPost = data.previousPost
     const nextPost = data.nextPost
     const relatedPosts = data.relatedPosts.edges
     const tags = post.tags.map(item => item.name)
+    post.url = resolveUrl(pageContext.collectionPath, post.url)
+    if (prevPost) {
+        prevPost.url = resolveUrl(pageContext.collectionPath, prevPost.url)
+    }
+    if (nextPost) {
+        nextPost.url = resolveUrl(pageContext.collectionPath, nextPost.url)
+    }
 
     return (
         <>
@@ -54,6 +62,7 @@ PostNotImage.propTypes = {
             id: PropTypes.string.isRequired,
             custom_excerpt: PropTypes.string,
             tags: PropTypes.array,
+            url: PropTypes.string.isRequired,
         }).isRequired,
         nextPost: PropTypes.shape({
             url: PropTypes.string,
@@ -73,6 +82,7 @@ PostNotImage.propTypes = {
         //allGhostPost: PropTypes.object.isRequired,
     }).isRequired,
     location: PropTypes.object.isRequired,
+    pageContext: PropTypes.object.isRequired,
 }
 
 export default PostNotImage
@@ -147,7 +157,7 @@ export const postQuery = graphql`
         }
         relatedPosts: allGhostPost(
             filter: {
-                slug: {ne: $slug}, primary_tag: {slug: {eq: $primary_tag}}, tags: {elemMatch: {name: {nin: ["#portfolio","#podcast","#kusi-doc"]}}}
+                slug: {ne: $slug}, primary_tag: {slug: {eq: $primary_tag}}, tags: {elemMatch: {name: {nin: ["#portfolio","#podcast","#custom-kusi-doc"]}}}
                 },
             sort: { order: DESC, fields: [published_at] },
             limit: 6,

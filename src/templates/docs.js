@@ -1,10 +1,10 @@
 import React from "react"
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import { Layout } from '../../components/common'
-import { MetaData } from '../../components/common/meta'
+import { Layout } from '../components/common'
+import { MetaData } from '../components/common/meta'
 import { Link } from "gatsby"
-import relativeUrl from "../../utils/relativeUrl"
+import { relativeUrl, resolveUrl } from "../utils/relativeUrl"
 
 /**
 * Single post view (/:slug)
@@ -12,10 +12,11 @@ import relativeUrl from "../../utils/relativeUrl"
 * This file renders a single post and loads all the content.
 *
 */
-const KusiHome = ({ data, location }) => {
+const KusiHome = ({ data, location, pageContext }) => {
     //const page = data.ghostPage
     const posts = data.allGhostPost.edges
-    const firstPost = posts[0]
+    const firstPost = posts[0].node
+    firstPost.url = resolveUrl(pageContext.collectionPath, firstPost.url)
 
     return (
         <>
@@ -37,7 +38,7 @@ const KusiHome = ({ data, location }) => {
                         {/* <p className="spc-des" dangerouslySetInnerHTML={{ __html: page.html }}></p> */}
                         <div className="spc-buttons">
 
-                            <Link to={relativeUrl(firstPost.node.url)} className="button">
+                            <Link to={relativeUrl(firstPost.url)} className="button">
                                 <svg className="icon is-stroke"><use xlinkHref="#icon-docs"></use></svg>
                                 <span>Start Here</span>
                             </Link>&nbsp;
@@ -58,7 +59,7 @@ KusiHome.propTypes = {
         allGhostPost: PropTypes.object.isRequired,
     }).isRequired,
     location: PropTypes.object.isRequired,
-    pageContext: PropTypes.object,
+    pageContext: PropTypes.object.isRequired,
 }
 
 export default KusiHome
@@ -67,7 +68,7 @@ export const docsHomeQuery = graphql`
     query {
         allGhostPost(
             sort: {order: ASC, fields: published_at}
-            filter: {tags: {elemMatch: {name: {in: ["#kusi-doc"]}}}}
+            filter: {tags: {elemMatch: {name: {in: ["#custom-kusi-doc"]}}}}
         ) {
             edges {
                 node{

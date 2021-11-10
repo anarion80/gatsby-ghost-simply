@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import relativeUrl from '../../../utils/relativeUrl'
+import { relativeUrl } from "../../../utils/relativeUrl"
 import { Author } from '..'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { DateTimeComponent } from '..'
-import relativeUrl from '../../../utils/relativeUrl'
+import { relativeUrl } from "../../../utils/relativeUrl"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const StoryCardSmall = ({ post }) => {

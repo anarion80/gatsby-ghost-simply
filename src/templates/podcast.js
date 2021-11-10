@@ -5,6 +5,7 @@ import { Layout, Pagination } from '../components/common'
 import { MetaData } from '../components/common/meta'
 import StoryPodcast from "../components/common/story/StoryPodcast"
 import { StaticImage } from "gatsby-plugin-image"
+import { resolveUrl } from "../utils/relativeUrl"
 
 /**
 * Single post view (/:slug)
@@ -59,9 +60,11 @@ const Podcast = ({ data, location, pageContext }) => {
                 </div>
                 <div className="feed-entry-content py-12 px-4">
                     <div className="mx-auto max-w-4xl feed-entry-wrap">
-                        {posts.map(item => (
-                            <StoryPodcast post={item.node} key={item.node.id}/>
-                        ))}
+                        {posts.map((item) => {
+                            const post = item.node
+                            post.url = resolveUrl(pageContext.collectionPath, post.url)
+                            return <StoryPodcast post={post} key={item.node.id}/>
+                        })}
 
                         <Pagination pageContext={pageContext} />
                     </div>
@@ -77,7 +80,7 @@ Podcast.propTypes = {
         allGhostPost: PropTypes.object.isRequired,
     }).isRequired,
     location: PropTypes.object.isRequired,
-    pageContext: PropTypes.object,
+    pageContext: PropTypes.object.isRequired,
 }
 
 export default Podcast

@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 import { Author, PrimaryTag } from '..'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 //import { useLang, getTranslation } from '../../../utils/use-lang'
-import relativeUrl from '../../../utils/relativeUrl'
+import { relativeUrl } from "../../../utils/relativeUrl"
 
 const StoryGrid = ({ post }) => {
     //const url = `/${post.slug}/`

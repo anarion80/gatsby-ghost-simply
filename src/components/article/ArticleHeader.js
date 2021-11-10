@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { Author, SocialShare } from '../common'
-import relativeUrl from '../../utils/relativeUrl'
+import { relativeUrl } from '../../utils/relativeUrl'
 
 const ArticleHeader = ({ post }) => (
     <header className="post-header px-4 mx-auto max-w-740 relative z-3">

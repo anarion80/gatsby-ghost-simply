@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { StaticImage } from "gatsby-plugin-image"
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
-import relativeUrl from "../../utils/relativeUrl"
+import { relativeUrl } from "../../utils/relativeUrl"
 
 /**
 * Footer component
