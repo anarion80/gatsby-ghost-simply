@@ -22,7 +22,9 @@ const Podcast = ({ data, location, pageContext }) => {
             <MetaData
                 data={data}
                 location={location}
-                type="article"
+                title="Podcasts"
+                description="Podcasts page"
+                type="WebSite"
             />
             {/* <Helmet>
                 <style type="text/css">{`${page.codeinjection_styles}`}</style>

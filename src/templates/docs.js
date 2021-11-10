@@ -23,7 +23,9 @@ const KusiHome = ({ data, location, pageContext }) => {
             <MetaData
                 data={data}
                 location={location}
-                type="article"
+                title="Documentation"
+                description="Documentation starting page"
+                type="WebSite"
             />
             {/* <Helmet>
                 <style type="text/css">{`${page.codeinjection_styles}`}</style>

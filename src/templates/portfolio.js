@@ -60,7 +60,9 @@ const Portfolio = ({ data, location, pageContext }) => {
             <MetaData
                 data={data}
                 location={location}
-                type="article"
+                title="Portfolio"
+                description="Personal portfolio page"
+                type="WebSite"
             />
             <Layout footer={true} isPost={false} bodyClass="is-portfolio">
                 <header className="topic-header">
