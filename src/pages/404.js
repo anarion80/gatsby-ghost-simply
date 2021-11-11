@@ -52,6 +52,7 @@ export const notFoundQuery = graphql`
     query {
     allGhostPost(
         sort: { order: DESC, fields: [published_at] },
+        filter: {tags: {elemMatch: {name: {nin: ["#podcast","#portfolio","#custom-kusi-doc"]}}}}
         limit: 6,
     ) {
       edges {
