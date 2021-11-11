@@ -38,7 +38,7 @@ async function createLocalImagesNodes(nodeTypes, gatsbyNodeHelpers) {
         return
     }
 
-    const { createNode } = actions
+    const { createNode, createNodeField } = actions
 
     const promises = allImgTags.map((tag) => {
         const imgUrl = node[tag] ? node[tag].replace(/^\/\//, `https://`) : ``
@@ -63,8 +63,9 @@ async function createLocalImagesNodes(nodeTypes, gatsbyNodeHelpers) {
 
     if (fileNodes) {
         fileNodes.map((fileNode, i) => {
-            const id = `local${camelCase(allImgTags[i], { pascalCase: true })}___NODE`
-            node[id] = fileNode.id
+            //const id = `local${camelCase(allImgTags[i], { pascalCase: true })}`
+            //node[id] = fileNode.id
+            createNodeField({ node, name: `local${camelCase(allImgTags[i], { pascalCase: true })}`, value: fileNode.id })
         })
     }
 }
@@ -658,22 +659,22 @@ exports.createSchemaCustomization = ({ actions }) => {
     const { createTypes } = actions
     createTypes(`
         type GhostPost implements Node {
-            localFeatureImage: File @link(from: "localFeatureImage___NODE")
+            localFeatureImage: File @link(from: "fields.localFeatureImage")
         }
         type GhostPage implements Node {
-            localFeatureImage: File @link(from: "localFeatureImage___NODE")
+            localFeatureImage: File @link(from: "fields.localFeatureImage")
         }
         type GhostAuthor implements Node {
-            localCoverImage: File @link(from: "localCoverImage___NODE")
-            localProfileImage: File @link(from: "localProfileImage___NODE")
+            localCoverImage: File @link(from: "fields.localCoverImage")
+            localProfileImage: File @link(from: "fields.localProfileImage")
         }
         type GhostTag implements Node {
-            localFeatureImage: File @link(from: "localFeatureImage___NODE")
+            localFeatureImage: File @link(from: "fields.localFeatureImage")
         }
         type GhostSettings implements Node {
-            localCoverImage: File @link(from: "localCoverImage___NODE")
-            localLogo: File @link(from: "localLogo___NODE")
-            localIcon: File @link(from: "localIcon___NODE")
+            localCoverImage: File @link(from: "fields.localCoverImage")
+            localLogo: File @link(from: "fields.localLogo")
+            localIcon: File @link(from: "fields.localIcon")
             accent_color: String
         }
 
