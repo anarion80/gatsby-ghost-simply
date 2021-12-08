@@ -17,6 +17,7 @@ import '../../styles/react-medium-image-zoom.css'
 import videoResponsive from "../../utils/videoResponsive"
 import resizeImageGalleries from "../../utils/resizeImageGalleries"
 import mediumZoomImg from "../../utils/mediumZoom"
+import toggle from "../../utils/toggle"
 import siteConfig from "../../utils/siteConfig"
 import CookieConsent, { Cookies } from "react-cookie-consent"
 import { useLocation } from "@reach/router" // this helps tracking the location
@@ -55,6 +56,7 @@ const DefaultLayout = ({ data, children, bodyClass, footer, isPost }) => {
         videoResponsive() // responsive, bigger embedded videos from Ghost posts
         resizeImageGalleries() // proper sizes of images in galleries in Ghost posts
         mediumZoomImg(`.post-body img`) // Medium-style image zoom
+        toggle() // enable toggle for toggle card
         //mediumZoomImg(`.post-image img`) // Medium-style image zoom
     }, [])
 
