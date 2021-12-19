@@ -12,12 +12,28 @@ import {
 
 // Styles
 import '../../styles/main.css'
+import '../../styles/cards/audio.css'
+import '../../styles/cards/before-after.css'
+import '../../styles/cards/blockquote.css'
+import '../../styles/cards/bookmark.css'
+import '../../styles/cards/button.css'
+import '../../styles/cards/callout.css'
+import '../../styles/cards/file.css'
+import '../../styles/cards/gallery.css'
+import '../../styles/cards/header.css'
+import '../../styles/cards/nft.css'
+import '../../styles/cards/product.css'
+import '../../styles/cards/toggle.css'
+import '../../styles/cards/video.css'
 import '../../styles/react-medium-image-zoom.css'
 
 import videoResponsive from "../../utils/videoResponsive"
 import resizeImageGalleries from "../../utils/resizeImageGalleries"
 import mediumZoomImg from "../../utils/mediumZoom"
 import toggle from "../../utils/toggle"
+import audio from "../../utils/audio"
+import video from "../../utils/video"
+import beforeAfter from "../../utils/before-after"
 import siteConfig from "../../utils/siteConfig"
 import CookieConsent, { Cookies } from "react-cookie-consent"
 import { useLocation } from "@reach/router" // this helps tracking the location
@@ -57,6 +73,9 @@ const DefaultLayout = ({ data, children, bodyClass, footer, isPost }) => {
         resizeImageGalleries() // proper sizes of images in galleries in Ghost posts
         mediumZoomImg(`.post-body img`) // Medium-style image zoom
         toggle() // enable toggle for toggle card
+        audio() // enable audio controls
+        video() // enable video controls
+        beforeAfter()
         //mediumZoomImg(`.post-image img`) // Medium-style image zoom
     }, [])
 

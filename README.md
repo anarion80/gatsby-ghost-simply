@@ -56,6 +56,7 @@ Rewritten from Handlebars theme to React/Gatsby.
 - Resize Image Galleries
 - Medium style image zoom
 - [GDPR Cookie Consent and Google/Facebook tracking](https://github.com/andrezimpel/gatsby-plugin-gdpr-cookies)
+- New Ghost cards (GIF, buttons, NFT, callouts, toggles, quotes, products, audio, video, files, headers)
 
 ## ❌ What is not yet working
 - [Logo Light / Dark Mode](https://godofredo.ninja/ghost-theme/simply/settings/#logolightdarkmode)
