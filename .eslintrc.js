@@ -1,5 +1,5 @@
 module.exports = {
-    parser: `babel-eslint`,
+    parser: `@babel/eslint-parser`,
     parserOptions: {
         ecmaVersion: 6,
         ecmaFeatures: {
@@ -17,7 +17,7 @@ module.exports = {
         react: {
             createClass: `createReactClass`,
             pragma: `React`,
-            version: `16.0`,
+            version: `18.0`,
             flowVersion: `0.53`,
         },
         propWrapperFunctions: [`forbidExtraProps`],
