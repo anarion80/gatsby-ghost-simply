@@ -14,7 +14,7 @@ const TagCloud = () => {
         allGhostTag(
             limit: 5
             filter: {visibility: {eq: "public"}}
-            sort: {fields: postCount, order: DESC}
+            sort: {postCount: DESC}
         ) {
             edges {
                 node {

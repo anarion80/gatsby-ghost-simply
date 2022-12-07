@@ -80,7 +80,7 @@ export const pageQuery = graphql`
             ...GhostTagFields
         }
         allGhostPost(
-            sort: { order: DESC, fields: [published_at] },
+            sort: {published_at: DESC}
             filter: {tags: {elemMatch: {slug: {eq: $slug, nin: ["hash-portfolio","hash-podcast","hash-custom-kusi-doc"]}}}}
             limit: $limit,
             skip: $skip

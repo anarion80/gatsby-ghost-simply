@@ -132,7 +132,7 @@ export default IndexMedium
 export const pageQuery = graphql`
   query GhostPostMediumQuery($limit: Int!, $skip: Int!) {
     allGhostPost(
-        sort: { order: DESC, fields: [published_at] },
+        sort: {published_at: DESC}
         filter: {tags: {elemMatch: {name: {nin: ["#podcast","#portfolio","#custom-kusi-doc"]}}}},
         limit: $limit,
         skip: $skip

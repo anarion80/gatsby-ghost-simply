@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import url from 'url'
 
 import config from '../../../utils/siteConfig'
@@ -97,9 +97,8 @@ MetaData.propTypes = {
     image: PropTypes.string,
 }
 
-const MetaDataQuery = props => (
-    <StaticQuery
-        query={graphql`
+const MetaDataQuery = (props) => {
+    const data = useStaticQuery(graphql`
             query GhostSettingsMetaData {
                 allGhostSettings {
                     edges {
@@ -110,9 +109,8 @@ const MetaDataQuery = props => (
                     }
                 }
             }
-        `}
-        render={data => <MetaData settings={data} {...props} />}
-    />
-)
+        `)
+    return <MetaData settings={data} {...props} />
+}
 
 export default MetaDataQuery

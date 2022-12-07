@@ -7,8 +7,8 @@ const SidebarPost = () => {
         query GhostSidebarLatestPostsQuery {
         allGhostPost(
             limit: 5
-            filter: {visibility: {eq: "public"}, tags: {elemMatch: {name: {nin: ["#portfolio","#podcast","#custom-kusi-doc"]}}}},
-            sort: {order: DESC, fields: [published_at]}
+            filter: {visibility: {eq: "public"}, tags: {elemMatch: {name: {nin: ["#portfolio", "#podcast", "#custom-kusi-doc"]}}}}
+            sort: {published_at: DESC}
         ) {
             edges {
                 node {

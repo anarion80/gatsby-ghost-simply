@@ -69,7 +69,7 @@ export default KusiHome
 export const docsHomeQuery = graphql`
     query {
         allGhostPost(
-            sort: {order: ASC, fields: published_at}
+            sort: {published_at: ASC}
             filter: {tags: {elemMatch: {name: {in: ["#custom-kusi-doc"]}}}}
         ) {
             edges {

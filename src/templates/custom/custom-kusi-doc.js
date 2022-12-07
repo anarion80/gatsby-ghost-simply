@@ -20,9 +20,9 @@ const PostDoc = ({ data, location, pageContext }) => {
     const nextPost = data.nextPost
     const previousPost = data.previousPost
     const t = getTranslation(useLang())
-    const {
-        breadcrumb: { crumbs },
-    } = pageContext
+    // const {
+    //     breadcrumb: { crumbs },
+    // } = pageContext
     const capitalize = s => s && s[0].toUpperCase() + s.slice(1)
     post.url = resolveUrl(pageContext.collectionPath, post.url)
     if (previousPost) {
@@ -150,7 +150,7 @@ const PostDoc = ({ data, location, pageContext }) => {
                     {/* {{!-- content of the documentation --}} */}
                     <article className="py-4 md:py-12 flex-grow">
                         <div className="max-w-2xl mx-auto md:px-4">
-                            <header>
+                            {/* <header>
                                 <div className="mb-4 text-sm text-gray-500 noWrapWithEllipsis">
                                     {crumbs.map((crumb, i) => (
                                         <span key={i}>
@@ -161,7 +161,7 @@ const PostDoc = ({ data, location, pageContext }) => {
                                     ))}
                                 </div>
                                 <h1 className="text-title">{post.title}</h1>
-                            </header>
+                            </header> */}
 
                             <section className="post-body font-sans has-sidebar text-base leading-relaxed js-kusi-doc" dangerouslySetInnerHTML={{ __html: post.childHtmlRehype.html }}>
                             </section>
@@ -320,7 +320,7 @@ export const postQuery = graphql`
             filter: {
                 slug: {ne: $slug}, primary_tag: {slug: {eq: $primary_tag}}, tags: {elemMatch: {name: {nin: ["#portfolio","#podcast"]}}}
                 },
-            sort: { order: DESC, fields: [published_at] },
+            sort: {published_at: DESC}
             limit: 6,
         ) {
             edges {
@@ -355,7 +355,7 @@ export const postQuery = graphql`
             }
         }
         allGhostPost(
-            sort: { order: ASC, fields: [published_at] },
+            sort: {published_at: DESC}
             filter: {tags: {elemMatch: {name: {in: ["#custom-kusi-doc"]}}}}
         ) {
             edges {

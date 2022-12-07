@@ -62,6 +62,7 @@ async function createLocalImagesNodes(nodeTypes, gatsbyNodeHelpers) {
     }
 
     if (fileNodes) {
+        // eslint-disable-next-line array-callback-return
         fileNodes.map((fileNode, i) => {
             //const id = `local${camelCase(allImgTags[i], { pascalCase: true })}`
             //node[id] = fileNode.id
@@ -119,8 +120,10 @@ exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
     const result = await graphql(`
         {
-            blogPosts: allGhostPost(sort: { order: ASC, fields: published_at }
-                filter: {tags: {elemMatch: {name: {nin: ["#podcast","#portfolio","#custom-kusi-doc"]}}}}) {
+            blogPosts: allGhostPost(
+                sort: {published_at: ASC}
+                filter: {tags: {elemMatch: {name: {nin: ["#podcast", "#portfolio", "#custom-kusi-doc"]}}}}
+            ) {
                 edges {
                     node {
                         slug
@@ -139,9 +142,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 }
             }
             podcastPosts: allGhostPost(
-                    sort: { order: ASC, fields: published_at }
-                    filter: {tags: {elemMatch: {name: {in: ["#podcast"]}}}}
-                    ) {
+                sort: {published_at: ASC}
+                filter: {tags: {elemMatch: {name: {in: ["#podcast"]}}}}
+            ) {
                 edges {
                     node {
                         slug
@@ -160,9 +163,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 }
             }
             portfolioPosts: allGhostPost(
-                    sort: { order: ASC, fields: published_at }
-                    filter: {tags: {elemMatch: {name: {in: ["#portfolio"]}}}}
-                    ) {
+                sort: {published_at: ASC}
+                filter: {tags: {elemMatch: {name: {in: ["#portfolio"]}}}}
+            ) {
                 edges {
                     node {
                         slug
@@ -180,8 +183,10 @@ exports.createPages = async ({ graphql, actions }) => {
                     }
                 }
             }
-            docPosts: allGhostPost(sort: { order: ASC, fields: published_at }
-                filter: {tags: {elemMatch: {name: {in: ["#custom-kusi-doc"]}}}}) {
+            docPosts: allGhostPost(
+                sort: {published_at: ASC}
+                filter: {tags: {elemMatch: {name: {in: ["#custom-kusi-doc"]}}}}
+            ) {
                 edges {
                     node {
                         slug
@@ -199,7 +204,7 @@ exports.createPages = async ({ graphql, actions }) => {
                     }
                 }
             }
-            allGhostTag(sort: { order: ASC, fields: name }) {
+            allGhostTag(sort: {name: ASC}) {
                 edges {
                     node {
                         slug
@@ -208,7 +213,7 @@ exports.createPages = async ({ graphql, actions }) => {
                     }
                 }
             }
-            allGhostAuthor(sort: { order: ASC, fields: name }) {
+            allGhostAuthor(sort: {name: ASC}) {
                 edges {
                     node {
                         slug
@@ -217,7 +222,7 @@ exports.createPages = async ({ graphql, actions }) => {
                     }
                 }
             }
-            allGhostPage(sort: { order: ASC, fields: published_at }) {
+            allGhostPage(sort: {published_at: ASC}) {
                 edges {
                     node {
                         slug
@@ -657,28 +662,28 @@ exports.createPages = async ({ graphql, actions }) => {
 
 exports.createSchemaCustomization = ({ actions }) => {
     const { createTypes } = actions
-    createTypes(`
+    const typeDefs = `
         type GhostPost implements Node {
-            localFeatureImage: File @link(from: "fields.localFeatureImage")
-        }
-        type GhostPage implements Node {
-            localFeatureImage: File @link(from: "fields.localFeatureImage")
-        }
-        type GhostAuthor implements Node {
-            localCoverImage: File @link(from: "fields.localCoverImage")
-            localProfileImage: File @link(from: "fields.localProfileImage")
-        }
-        type GhostTag implements Node {
-            localFeatureImage: File @link(from: "fields.localFeatureImage")
-        }
-        type GhostSettings implements Node {
-            localCoverImage: File @link(from: "fields.localCoverImage")
-            localLogo: File @link(from: "fields.localLogo")
-            localIcon: File @link(from: "fields.localIcon")
-            accent_color: String
-        }
-
-  `)
+                localFeatureImage: File @link(from: "fields.localFeatureImage")
+            }
+            type GhostPage implements Node {
+                localFeatureImage: File @link(from: "fields.localFeatureImage")
+            }
+            type GhostAuthor implements Node {
+                localCoverImage: File @link(from: "fields.localCoverImage")
+                localProfileImage: File @link(from: "fields.localProfileImage")
+            }
+            type GhostTag implements Node {
+                localFeatureImage: File @link(from: "fields.localFeatureImage")
+            }
+            type GhostSettings implements Node {
+                localCoverImage: File @link(from: "fields.localCoverImage")
+                localLogo: File @link(from: "fields.localLogo")
+                localIcon: File @link(from: "fields.localIcon")
+                accent_color: String
+            }
+    `
+    createTypes(typeDefs)
 }
 
 exports.onCreateNode = async (gatsbyNodeHelpers) => {

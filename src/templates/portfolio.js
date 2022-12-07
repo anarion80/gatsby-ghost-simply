@@ -114,7 +114,7 @@ export default Portfolio
 export const portfolioQuery = graphql`
     query {
         allGhostPost(
-            sort: {order: DESC, fields: published_at}
+            sort: {published_at: DESC}
             filter: {tags: {elemMatch: {name: {in: ["#portfolio"]}}}}
         ) {
             edges {

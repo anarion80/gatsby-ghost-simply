@@ -2,7 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
-import { StaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import ImageMeta from './ImageMeta'
 import getAuthorProperties from './getAuthorProperties'
@@ -76,9 +76,8 @@ AuthorMeta.propTypes = {
     canonical: PropTypes.string.isRequired,
 }
 
-const AuthorMetaQuery = props => (
-    <StaticQuery
-        query={graphql`
+const AuthorMetaQuery = (props) => {
+    const data = useStaticQuery(graphql`
             query GhostSettingsAuthorMeta {
                 allGhostSettings {
                     edges {
@@ -88,9 +87,8 @@ const AuthorMetaQuery = props => (
                     }
                 }
             }
-        `}
-        render={data => <AuthorMeta settings={data} {...props} />}
-    />
-)
+        `)
+    return <AuthorMeta settings={data} {...props} />
+}
 
 export default AuthorMetaQuery

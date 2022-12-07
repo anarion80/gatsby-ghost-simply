@@ -96,7 +96,7 @@ export const archiveTagsQuery = graphql`
         allGhostTag(
             limit: 18
             filter: {visibility: {eq: "public"}}
-            sort: {order: DESC, fields: count___posts}
+            sort: {count: {posts: DESC}}
         ) {
             edges {
                 node {

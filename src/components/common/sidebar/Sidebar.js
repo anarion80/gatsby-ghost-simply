@@ -7,8 +7,8 @@ const Sidebar = () => {
         query GhostFeaturedPostsQuery {
         allGhostPost(
             limit: 5
-            filter: {visibility: {eq: "public"}, featured: {eq: true}, tags: {elemMatch: {name: {nin: ["#portfolio","#podcast"]}}}},
-            sort: {order: DESC, fields: [published_at]}
+            filter: {visibility: {eq: "public"}, featured: {eq: true}, tags: {elemMatch: {name: {nin: ["#portfolio", "#podcast"]}}}}
+            sort: {published_at: DESC}
         ) {
             edges {
                 node {

@@ -135,7 +135,7 @@ export default IndexPhotographer
 export const pageQuery = graphql`
   query GhostPostPhotographerQuery($limit: Int!, $skip: Int!) {
     allPosts: allGhostPost(
-        sort: { order: DESC, fields: [published_at] },
+        sort: {published_at: DESC}
         filter: {tags: {elemMatch: {name: {nin: ["#podcast","#portfolio","#custom-kusi-doc"]}}}},
         limit: $limit,
         skip: $skip
@@ -176,7 +176,7 @@ export const pageQuery = graphql`
     featuredPosts: allGhostPost(
             limit: 3
             filter: {visibility: {eq: "public"}, featured: {eq: true}}
-            sort: {order: DESC, fields: [published_at]}
+            sort: {published_at: DESC}
         ) {
       edges {
         node {

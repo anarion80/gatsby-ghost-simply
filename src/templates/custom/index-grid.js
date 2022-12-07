@@ -57,7 +57,7 @@ export default IndexGrid
 export const pageQuery = graphql`
   query GhostPostGridQuery($limit: Int!, $skip: Int!) {
     allGhostPost(
-        sort: { order: DESC, fields: [published_at] },
+        sort: {published_at: DESC}
         filter: {tags: {elemMatch: {name: {nin: ["#podcast","#portfolio","#custom-kusi-doc"]}}}},
         limit: $limit,
         skip: $skip

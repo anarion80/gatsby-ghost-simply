@@ -5,6 +5,7 @@ import { graphql } from 'gatsby'
 import { Layout } from '../../components/common'
 import MediaCover from '../../components/common/MediaCover'
 import { MetaData } from '../../components/common/meta'
+import { getImage } from "gatsby-plugin-image"
 
 /**
 * Main index page (home page)
@@ -18,6 +19,7 @@ const IndexPersonal = ({ data, location }) => {
     //const posts = data.allGhostPost.edges
     //const featuredPost = posts.filter(item => item.node.featured).length > 0 ? posts.filter(item => item.node.featured)[0].node : undefined
     const featuredPost = data.ghostPage
+    const image = featuredPost ? getImage(featuredPost.localFeatureImage) : undefined
 
     return (
         <>
@@ -26,7 +28,9 @@ const IndexPersonal = ({ data, location }) => {
 
                 <article className="simply-hero-cover flex items-center justify-center relative min-h-screen py-24 bg-dark">
                     {/* {!-- Featured Media - partials/components/media-cover.hbs --} */}
-                    <MediaCover background={featuredPost.localFeatureImage} hasGradient={true} altTitle={featuredPost.title} />
+                    {featuredPost.feature_image &&
+                        <MediaCover background={image} hasGradient={true} altTitle={featuredPost.title} />
+                    }
 
                     <div className="mx-auto max-w-740 px-4 p-24 z-3 text-white text-center">
                         <h1 className="mb-6 text-5xl md:text-6xl tracking-wider animated bounceIn">{featuredPost.title}</h1>

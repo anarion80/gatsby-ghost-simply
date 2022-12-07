@@ -90,7 +90,7 @@ export default Podcast
 export const podcastQuery = graphql`
     query($limit: Int!, $skip: Int!) {
         allGhostPost(
-            sort: {order: DESC, fields: published_at}
+            sort: {published_at: DESC}
             filter: {tags: {elemMatch: {name: {in: ["#podcast"]}}}}
             limit: $limit,
             skip: $skip

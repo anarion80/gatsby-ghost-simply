@@ -66,7 +66,7 @@ export default Index
 export const pageQuery = graphql`
   query GhostPostQuery($limit: Int!, $skip: Int!) {
     allGhostPost(
-        sort: { order: DESC, fields: [published_at] },
+        sort: {published_at: DESC}
         filter: {tags: {elemMatch: {name: {nin: ["#podcast","#portfolio","#custom-kusi-doc"]}}}}
         limit: $limit,
         skip: $skip
@@ -75,11 +75,10 @@ export const pageQuery = graphql`
         node {
             localFeatureImage {
                 childImageSharp {
-                gatsbyImageData(transformOptions: {
+                    gatsbyImageData(transformOptions: {
                         fit: COVER, cropFocus: ATTENTION
-                    }
+                        }
                     width: 720
-
                     placeholder: BLURRED
                     formats: [AUTO, WEBP, AVIF]
                     )

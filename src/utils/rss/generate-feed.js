@@ -71,7 +71,7 @@ const generateRSSFeed = function generateRSSFeed(siteConfig) {
         query: `
         {
             allGhostPost(
-                sort: {order: DESC, fields: published_at}
+                sort: {published_at: DESC}
                 filter: {tags: {elemMatch: {name: {nin: ["#podcast","#portfolio","#custom-kusi-doc"]}}}}
             ) {
                 edges {

@@ -2,7 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
-import { StaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import url from 'url'
 
 import ImageMeta from './ImageMeta'
@@ -95,9 +95,8 @@ WebsiteMeta.propTypes = {
     type: PropTypes.oneOf([`WebSite`, `Series`]).isRequired,
 }
 
-const WebsiteMetaQuery = props => (
-    <StaticQuery
-        query={graphql`
+const WebsiteMetaQuery = (props) => {
+    const data = useStaticQuery(graphql`
             query GhostSettingsWebsiteMeta {
                 allGhostSettings {
                     edges {
@@ -107,9 +106,8 @@ const WebsiteMetaQuery = props => (
                     }
                 }
             }
-        `}
-        render={data => <WebsiteMeta settings={data} {...props} />}
-    />
-)
+        `)
+    return <WebsiteMeta settings={data} {...props} />
+}
 
 export default WebsiteMetaQuery

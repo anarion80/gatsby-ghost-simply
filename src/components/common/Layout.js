@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+//import { Helmet } from 'react-helmet'
+import { useStaticQuery, graphql } from 'gatsby'
 import {
     //Footer,
     FooterDark,
@@ -35,9 +35,9 @@ import audio from "../../utils/audio"
 import video from "../../utils/video"
 import beforeAfter from "../../utils/before-after"
 import siteConfig from "../../utils/siteConfig"
-import CookieConsent, { Cookies } from "react-cookie-consent"
-import { useLocation } from "@reach/router" // this helps tracking the location
-import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies'
+//import CookieConsent, { Cookies } from "react-cookie-consent"
+import { useLocation } from "@gatsbyjs/reach-router"// this helps tracking the location
+//import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies'
 
 /**
 * Main layout component
@@ -81,18 +81,7 @@ const DefaultLayout = ({ data, children, bodyClass, footer, isPost }) => {
 
     return (
         <>
-            <Helmet>
-                <html lang={site.lang} />
-                <style type="text/css">{`${site.codeinjection_styles}`}</style>
-                <style type="text/css">{`${site.codeinjection_head}`}</style>
-                <style type="text/css">{`:root {--ghost-accent-color: ${site.accent_color};}`}</style>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css"></link>
-                {/*<script src="/scripts/main.js" type="text/javascript"></script>*/}
-                {/* <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" as="style" onLoad="this.onload=null;this.rel='stylesheet'" /> */}
-
-                <body className={bodyClass} />
-            </Helmet>
-            <CookieConsent
+            {/* <CookieConsent
                 location="none"
                 buttonText="Accept"
                 declineButtonText="Decline"
@@ -120,7 +109,7 @@ const DefaultLayout = ({ data, children, bodyClass, footer, isPost }) => {
                 }}>
                 <span id="cookieconsent:desc" className="cc-message">This website uses cookies to enhance user experience. Please check the <a aria-label="learn more about cookies" role="button" tabIndex="0" className="cc-link" href={`${siteConfig.siteUrl}/privacy`} rel="noopener noreferrer nofollow" target="_blank">privacy policy</a> for more details.</span>
 
-            </CookieConsent>
+            </CookieConsent> */}
             <div className="simply-viewport flexColumnTop">
                 <Header site={site} hasDropDown={hasDropDown} />
 
@@ -160,51 +149,65 @@ DefaultLayout.propTypes = {
     }).isRequired,
 }
 
-const DefaultLayoutSettingsQuery = props => (
-    <StaticQuery
-        query={graphql`
-            query GhostSettings {
-                allGhostSettings {
-                    edges {
-                        node {
-                            localLogo {
-                                childImageSharp {
-                                gatsbyImageData(
-                                    transformOptions: {
-                                        fit: COVER, cropFocus: ATTENTION
-                                    }
-                                    height: 30
-                                    placeholder: BLURRED
-                                    formats: [AUTO, WEBP, AVIF]
-                                    )
+const DefaultLayoutSettingsQuery = (props) => {
+    const data = useStaticQuery(graphql`
+        query GhostSettings {
+            allGhostSettings {
+                edges {
+                    node {
+                        localLogo {
+                            childImageSharp {
+                            gatsbyImageData(
+                                transformOptions: {
+                                    fit: COVER, cropFocus: ATTENTION
                                 }
+                                height: 30
+                                placeholder: BLURRED
+                                formats: [AUTO, WEBP, AVIF]
+                                )
                             }
-                            localIcon {
-                                childImageSharp {
-                                gatsbyImageData(
-                                    transformOptions: {
-                                        fit: COVER, cropFocus: ATTENTION
-                                    }
-                                    width: 36
-                                    height: 36
-                                    placeholder: BLURRED
-                                    formats: [AUTO, WEBP, AVIF]
-                                    )
-                                }
-                            }
-                            ...GhostSettingsFields
                         }
-                    }
-                }
-                file(relativePath: { eq: "ghost-icon.png" }) {
-                    childImageSharp {
-                        gatsbyImageData(layout: FIXED)
+                        localIcon {
+                            childImageSharp {
+                            gatsbyImageData(
+                                transformOptions: {
+                                    fit: COVER, cropFocus: ATTENTION
+                                }
+                                width: 36
+                                height: 36
+                                placeholder: BLURRED
+                                formats: [AUTO, WEBP, AVIF]
+                                )
+                            }
+                        }
+                        ...GhostSettingsFields
                     }
                 }
             }
-        `}
-        render={data => <DefaultLayout data={data} {...props} />}
-    />
-)
+            file(relativePath: { eq: "ghost-icon.png" }) {
+                childImageSharp {
+                    gatsbyImageData(layout: FIXED)
+                }
+            }
+        }
+    `)
+    return <DefaultLayout data={data} {...props} />
+}
 
+// export const Head = ({ location, params, data, pageContext }) => {
+//     const site = data.allGhostSettings.edges[0].node
+//     return (
+//         <>
+//             <html lang={site.lang} />
+//             <style type="text/css">{`${site.codeinjection_styles}`}</style>
+//             <style type="text/css">{`${site.codeinjection_head}`}</style>
+//             <style type="text/css">{`:root {--ghost-accent-color: ${site.accent_color};}`}</style>
+//             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css"></link>
+//             {/*<script src="/scripts/main.js" type="text/javascript"></script>*/}
+//             {/* <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" as="style" onLoad="this.onload=null;this.rel='stylesheet'" /> */}
+
+//             <body className={pageContext.bodyClass} />
+//         </>
+//     )
+// }
 export default DefaultLayoutSettingsQuery

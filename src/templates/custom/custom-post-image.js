@@ -176,7 +176,7 @@ export const postQuery = graphql`
             filter: {
                 slug: {ne: $slug}, primary_tag: {slug: {eq: $primary_tag}}, tags: {elemMatch: {name: {nin: ["#portfolio","#podcast","#custom-kusi-doc"]}}}
                 },
-            sort: { order: DESC, fields: [published_at] },
+            sort: {published_at: DESC}
             limit: 6,
         ) {
             edges {
