@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
 import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 import {
     //Footer,
@@ -79,6 +78,21 @@ const DefaultLayout = ({ data, children, bodyClass, footer, isPost }) => {
     }, [bodyClass])
 
     useEffect(() => {
+        const isSSR = typeof window === `undefined`
+        return () => {
+            if (!isSSR) {
+                localStorage.theme === `dark` || (!(`theme` in localStorage) && window.matchMedia(`(prefers-color-scheme: dark)`).matches) ?
+                    bodyClass.split(` `).forEach((ele) => {
+                        document.body.classList.add(ele)
+                    }) & document.body.classList.add(`dark`)
+                    : bodyClass.split(` `).forEach((ele) => {
+                        document.body.classList.add(ele)
+                    }) & document.body.classList.add(`light`)
+            }
+        }
+    }, [bodyClass])
+
+    useEffect(() => {
         videoResponsive() // responsive, bigger embedded videos from Ghost posts
         resizeImageGalleries() // proper sizes of images in galleries in Ghost posts
         mediumZoomImg(`.post-body img`) // Medium-style image zoom
@@ -91,9 +105,6 @@ const DefaultLayout = ({ data, children, bodyClass, footer, isPost }) => {
 
     return (
         <>
-            <Helmet>
-                <body className={localStorage.theme === `dark` || (!(`theme` in localStorage) && window.matchMedia(`(prefers-color-scheme: dark)`).matches) ? bodyClass + ` dark` : bodyClass + `light`} />
-            </Helmet>
             <CookieConsent
                 location="none"
                 buttonText="Accept"
