@@ -5,6 +5,7 @@ import { graphql } from 'gatsby'
 import { Layout, StoryGrid, Pagination } from '../../components/common'
 import StoryFeatured from '../../components/common/story/StoryFeatured'
 import { MetaData } from '../../components/common/meta'
+import '../../styles/tiny-slider.css'
 //import { tns } from "../../../node_modules/tiny-slider/src/tiny-slider"
 
 /**
