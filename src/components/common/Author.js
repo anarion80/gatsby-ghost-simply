@@ -29,7 +29,7 @@ const Author = ({ post, hideAvatar }) => {
                                     {author.profile_image ?
                                         <GatsbyImage image={getImage(author.localProfileImage)} className="object-cover rounded-full" alt={`${t(`Go_to_the_profile_of`)}` + author.name}/>
                                         :
-                                        <StaticImage src="../../images/avatar.png" className="object-cover rounded-full" alt={`${t(`Go_to_the_profile_of`)} ` + author.name} width="36" height="36"/>
+                                        <StaticImage src="../../images/avatar.png" className="object-cover rounded-full" alt={`${t(`Go_to_the_profile_of`)} ` + author.name} width={36} height={36}/>
                                     }
                                 </Link>
                             </li>

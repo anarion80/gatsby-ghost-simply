@@ -36,7 +36,7 @@ const Header = ({ site, hasDropDown }) => {
 
                             {site.logo ?
                                 <GatsbyImage image={getImage(site.localLogo)} className="header-logo-img max-h-9 logo-default" alt={site.title} />
-                                : <StaticImage src="../../images/ghost-icon.png" className="header-logo-img max-h-9 logo-default" alt={site.title} width="115" height="30"/>
+                                : <StaticImage src="../../images/ghost-icon.png" className="header-logo-img max-h-9 logo-default" alt={site.title} width={115} height={30}/>
                             }
                         </Link>
                     </div>
