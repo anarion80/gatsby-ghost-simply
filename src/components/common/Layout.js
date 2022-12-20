@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import PropTypes from 'prop-types'
-//import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 import {
     //Footer,
@@ -54,11 +54,21 @@ const DefaultLayout = ({ data, children, bodyClass, footer, isPost }) => {
 
     /* to turn the Header transparent when hero picture is used (and back to normal when srolled down) */
     const scrollEventListener = () => {
+        const hasCover = document.body.closest(`.has-cover`)
+        const $jsHeader = document.querySelector(`.js-header`)
         const lastScrollY = window.scrollY
-        lastScrollY >= 60 ?
-            document.body.closest(`.has-cover`) && document.body.classList.remove(`is-head-transparent`)
-            :
-            document.body.closest(`.has-cover`) && document.body.classList.add(`is-head-transparent`)
+
+        if (lastScrollY > 5) {
+            $jsHeader.classList.add(`shadow-header`, `header-bg`)
+        } else {
+            $jsHeader.classList.remove(`shadow-header`, `header-bg`)
+        }
+
+        if (!hasCover) {
+            return
+        }
+
+        lastScrollY >= 60 ? document.body.classList.remove(`is-head-transparent`) : document.body.classList.add(`is-head-transparent`)
     }
 
     useEffect(() => {
@@ -81,6 +91,9 @@ const DefaultLayout = ({ data, children, bodyClass, footer, isPost }) => {
 
     return (
         <>
+            <Helmet>
+                <body className={bodyClass} />
+            </Helmet>
             <CookieConsent
                 location="none"
                 buttonText="Accept"
