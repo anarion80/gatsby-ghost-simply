@@ -63,6 +63,6 @@
     line-height: 1.5em;
 }
 
-.kg-callout-card + .kg-callout-card {
+.kg-callout-card+.kg-callout-card {
     margin-top: 1em;
 }

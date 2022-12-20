@@ -17,14 +17,14 @@
     display: flex;
     flex: auto;
     flex-direction: column;
-    text-decoration: none !important;
+    text-decoration: none;
     font-family: -apple-system, BlinkMacSystemFont,
-                'avenir next', avenir,
-                'helvetica neue', helvetica,
-                ubuntu,
-                roboto, noto,
-                'segoe ui', arial,
-                sans-serif;
+        'avenir next', avenir,
+        'helvetica neue', helvetica,
+        ubuntu,
+        roboto, noto,
+        'segoe ui', arial,
+        sans-serif;
     font-size: 14px;
     font-weight: 400;
     box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);

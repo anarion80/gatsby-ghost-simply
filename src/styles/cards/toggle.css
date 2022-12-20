@@ -10,7 +10,7 @@
     padding: 1.2em;
 }
 
-.kg-toggle-card[data-kg-toggle-state="close"] .kg-toggle-content{
+.kg-toggle-card[data-kg-toggle-state="close"] .kg-toggle-content {
     height: 0;
     overflow: hidden;
     transition: opacity .5s ease, top .35s ease;
@@ -39,7 +39,7 @@
 }
 
 .kg-toggle-card h4.kg-toggle-heading-text {
-    font-size: 1em;
+    font-size: 1.15em;
     font-weight: 700;
     line-height: 1.3em;
     margin-top: 0;
@@ -59,7 +59,7 @@
     margin-bottom: 0;
 }
 
-.kg-toggle-card li + li {
+.kg-toggle-card li+li {
     margin-top: 0.5em;
 }
 
@@ -90,6 +90,6 @@
     fill-rule: evenodd;
 }
 
-.kg-toggle-card + .kg-toggle-card {
+.kg-toggle-card+.kg-toggle-card {
     margin-top: 1em;
 }

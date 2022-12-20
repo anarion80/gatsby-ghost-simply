@@ -55,7 +55,7 @@
     padding: 8px 12px;
     border: none;
     font-family: inherit;
-    font-size: 0.92em;
+    font-size: 1.15em;
     font-weight: 700;
     line-height: 1.15em;
     background: transparent;
@@ -72,7 +72,7 @@
     min-width: 38px;
     padding: 0 4px;
     font-family: inherit;
-    font-size: .68em;
+    font-size: .85em;
     font-weight: 500;
     line-height: 1.4em;
     white-space: nowrap;
@@ -82,7 +82,7 @@
     width: 56px;
     color: #ababab;
     font-family: inherit;
-    font-size: .68em;
+    font-size: .85em;
     font-weight: 500;
     line-height: 1.4em;
     white-space: nowrap;
@@ -127,7 +127,7 @@
     min-width: 37px;
     padding: 0 4px;
     font-family: inherit;
-    font-size: .68em;
+    font-size: .85em;
     font-weight: 600;
     line-height: 1.4em;
     text-align: left;
@@ -151,8 +151,9 @@
 }
 
 @media (max-width: 640px) {
+
     .kg-audio-mute-icon,
-    .kg-audio-unmute-icon  {
+    .kg-audio-unmute-icon {
         margin-left: auto;
     }
 }
@@ -254,7 +255,7 @@
     cursor: pointer;
     background: #fff;
     border-radius: 50%;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,0.24);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 
 .kg-audio-player-container input[type="range"]:active::-webkit-slider-thumb {
@@ -285,7 +286,7 @@
     cursor: pointer;
     background: #fff;
     border-radius: 50%;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,0.24);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 
 .kg-audio-player-container input[type="range"]:active::-moz-range-thumb {
@@ -320,7 +321,7 @@
     cursor: pointer;
     background: #fff;
     border-radius: 50%;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,0.24);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 
 .kg-audio-player-container input[type="range"]:active::-ms-thumb {

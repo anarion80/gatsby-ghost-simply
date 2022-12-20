@@ -17,7 +17,7 @@
     border: 1px solid rgb(124 139 154 / 25%);
     border-radius: 3px;
     transition: all ease-in-out 0.35s;
-    text-decoration: none !important;
+    text-decoration: none;
     width: 100%;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .kg-file-card-title {
-    font-size: 0.92em;
+    font-size: 1.15em;
     font-weight: 700;
     line-height: 1.3em;
 }
@@ -45,13 +45,13 @@
     opacity: 0.6;
 }
 
-.kg-file-card-title + .kg-file-card-caption {
+.kg-file-card-title+.kg-file-card-caption {
     margin-top: -3px;
 }
 
 .kg-file-card-metadata {
     display: inline;
-    font-size: 0.66em;
+    font-size: 0.825em;
     line-height: 1.3em;
     margin-top: 2px;
 }
@@ -132,6 +132,6 @@
     height: 20px;
 }
 
-.kg-file-card + .kg-file-card {
+.kg-file-card+.kg-file-card {
     margin-top: 1em;
 }

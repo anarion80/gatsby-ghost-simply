@@ -8,10 +8,10 @@
     --gap: 1.2rem;
 }
 
-.kg-image-card:not(.kg-card-hascaption) + .kg-image-card,
-.kg-image-card:not(.kg-card-hascaption) + .kg-gallery-card,
-.kg-gallery-card:not(.kg-card-hascaption) + .kg-image-card,
-.kg-gallery-card:not(.kg-card-hascaption) + .kg-gallery-card {
+.kg-image-card:not(.kg-card-hascaption)+.kg-image-card,
+.kg-image-card:not(.kg-card-hascaption)+.kg-gallery-card,
+.kg-gallery-card:not(.kg-card-hascaption)+.kg-image-card,
+.kg-gallery-card:not(.kg-card-hascaption)+.kg-gallery-card {
     margin-top: var(--gap);
 }
 
@@ -41,6 +41,7 @@
 }
 
 @media (max-width: 600px) {
+
     .kg-gallery-card,
     .kg-image-card {
         --gap: 0.6rem;
