@@ -414,6 +414,7 @@ type File = Node & {
   readonly size: Scalars['Int'];
   readonly sourceInstanceName: Scalars['String'];
   readonly uid: Scalars['Int'];
+  readonly url: Maybe<Scalars['String']>;
 };
 
 
@@ -560,6 +561,7 @@ type FileFieldSelector = {
   readonly size: InputMaybe<FieldSelectorEnum>;
   readonly sourceInstanceName: InputMaybe<FieldSelectorEnum>;
   readonly uid: InputMaybe<FieldSelectorEnum>;
+  readonly url: InputMaybe<FieldSelectorEnum>;
 };
 
 type FileFilterInput = {
@@ -605,6 +607,7 @@ type FileFilterInput = {
   readonly size: InputMaybe<IntQueryOperatorInput>;
   readonly sourceInstanceName: InputMaybe<StringQueryOperatorInput>;
   readonly uid: InputMaybe<IntQueryOperatorInput>;
+  readonly url: InputMaybe<StringQueryOperatorInput>;
 };
 
 type FileGroupConnection = {
@@ -691,6 +694,7 @@ type FileSortInput = {
   readonly size: InputMaybe<SortOrderEnum>;
   readonly sourceInstanceName: InputMaybe<SortOrderEnum>;
   readonly uid: InputMaybe<SortOrderEnum>;
+  readonly url: InputMaybe<SortOrderEnum>;
 };
 
 type FloatQueryOperatorInput = {
@@ -736,6 +740,7 @@ type GhostAuthor = Node & {
   readonly count: GhostPostCount;
   readonly cover_image: Maybe<Scalars['String']>;
   readonly facebook: Maybe<Scalars['String']>;
+  readonly fields: Maybe<GhostAuthorFields>;
   readonly ghostId: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
@@ -805,6 +810,7 @@ type GhostAuthorFieldSelector = {
   readonly count: InputMaybe<GhostPostCountFieldSelector>;
   readonly cover_image: InputMaybe<FieldSelectorEnum>;
   readonly facebook: InputMaybe<FieldSelectorEnum>;
+  readonly fields: InputMaybe<GhostAuthorFieldsFieldSelector>;
   readonly ghostId: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
@@ -823,12 +829,29 @@ type GhostAuthorFieldSelector = {
   readonly website: InputMaybe<FieldSelectorEnum>;
 };
 
+type GhostAuthorFields = {
+  readonly localProfileImage: Maybe<Scalars['String']>;
+};
+
+type GhostAuthorFieldsFieldSelector = {
+  readonly localProfileImage: InputMaybe<FieldSelectorEnum>;
+};
+
+type GhostAuthorFieldsFilterInput = {
+  readonly localProfileImage: InputMaybe<StringQueryOperatorInput>;
+};
+
+type GhostAuthorFieldsSortInput = {
+  readonly localProfileImage: InputMaybe<SortOrderEnum>;
+};
+
 type GhostAuthorFilterInput = {
   readonly bio: InputMaybe<StringQueryOperatorInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly count: InputMaybe<GhostPostCountFilterInput>;
   readonly cover_image: InputMaybe<StringQueryOperatorInput>;
   readonly facebook: InputMaybe<StringQueryOperatorInput>;
+  readonly fields: InputMaybe<GhostAuthorFieldsFilterInput>;
   readonly ghostId: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
@@ -898,6 +921,7 @@ type GhostAuthorSortInput = {
   readonly count: InputMaybe<GhostPostCountSortInput>;
   readonly cover_image: InputMaybe<SortOrderEnum>;
   readonly facebook: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<GhostAuthorFieldsSortInput>;
   readonly ghostId: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
@@ -1257,6 +1281,7 @@ type GhostPost = Node & {
   readonly feature_image_alt: Maybe<Scalars['String']>;
   readonly feature_image_caption: Maybe<Scalars['String']>;
   readonly featured: Scalars['Boolean'];
+  readonly fields: Maybe<GhostPostFields>;
   readonly ghostId: Maybe<Scalars['String']>;
   readonly html: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
@@ -1393,6 +1418,7 @@ type GhostPostFieldSelector = {
   readonly feature_image_alt: InputMaybe<FieldSelectorEnum>;
   readonly feature_image_caption: InputMaybe<FieldSelectorEnum>;
   readonly featured: InputMaybe<FieldSelectorEnum>;
+  readonly fields: InputMaybe<GhostPostFieldsFieldSelector>;
   readonly ghostId: InputMaybe<FieldSelectorEnum>;
   readonly html: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
@@ -1423,6 +1449,22 @@ type GhostPostFieldSelector = {
   readonly visibility: InputMaybe<FieldSelectorEnum>;
 };
 
+type GhostPostFields = {
+  readonly localFeatureImage: Maybe<Scalars['String']>;
+};
+
+type GhostPostFieldsFieldSelector = {
+  readonly localFeatureImage: InputMaybe<FieldSelectorEnum>;
+};
+
+type GhostPostFieldsFilterInput = {
+  readonly localFeatureImage: InputMaybe<StringQueryOperatorInput>;
+};
+
+type GhostPostFieldsSortInput = {
+  readonly localFeatureImage: InputMaybe<SortOrderEnum>;
+};
+
 type GhostPostFilterInput = {
   readonly access: InputMaybe<BooleanQueryOperatorInput>;
   readonly authors: InputMaybe<GhostAuthorFilterListInput>;
@@ -1444,6 +1486,7 @@ type GhostPostFilterInput = {
   readonly feature_image_alt: InputMaybe<StringQueryOperatorInput>;
   readonly feature_image_caption: InputMaybe<StringQueryOperatorInput>;
   readonly featured: InputMaybe<BooleanQueryOperatorInput>;
+  readonly fields: InputMaybe<GhostPostFieldsFilterInput>;
   readonly ghostId: InputMaybe<StringQueryOperatorInput>;
   readonly html: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
@@ -1536,6 +1579,7 @@ type GhostPostSortInput = {
   readonly feature_image_alt: InputMaybe<SortOrderEnum>;
   readonly feature_image_caption: InputMaybe<SortOrderEnum>;
   readonly featured: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<GhostPostFieldsSortInput>;
   readonly ghostId: InputMaybe<SortOrderEnum>;
   readonly html: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
@@ -1578,6 +1622,7 @@ type GhostSettings = Node & {
   readonly default_locale: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
   readonly facebook: Maybe<Scalars['String']>;
+  readonly fields: Maybe<GhostSettingsFields>;
   readonly ghostId: Maybe<Scalars['Int']>;
   readonly icon: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
@@ -1672,6 +1717,7 @@ type GhostSettingsFieldSelector = {
   readonly default_locale: InputMaybe<FieldSelectorEnum>;
   readonly description: InputMaybe<FieldSelectorEnum>;
   readonly facebook: InputMaybe<FieldSelectorEnum>;
+  readonly fields: InputMaybe<GhostSettingsFieldsFieldSelector>;
   readonly ghostId: InputMaybe<FieldSelectorEnum>;
   readonly icon: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
@@ -1709,6 +1755,30 @@ type GhostSettingsFieldSelector = {
   readonly version: InputMaybe<FieldSelectorEnum>;
 };
 
+type GhostSettingsFields = {
+  readonly localCoverImage: Maybe<Scalars['String']>;
+  readonly localIcon: Maybe<Scalars['String']>;
+  readonly localLogo: Maybe<Scalars['String']>;
+};
+
+type GhostSettingsFieldsFieldSelector = {
+  readonly localCoverImage: InputMaybe<FieldSelectorEnum>;
+  readonly localIcon: InputMaybe<FieldSelectorEnum>;
+  readonly localLogo: InputMaybe<FieldSelectorEnum>;
+};
+
+type GhostSettingsFieldsFilterInput = {
+  readonly localCoverImage: InputMaybe<StringQueryOperatorInput>;
+  readonly localIcon: InputMaybe<StringQueryOperatorInput>;
+  readonly localLogo: InputMaybe<StringQueryOperatorInput>;
+};
+
+type GhostSettingsFieldsSortInput = {
+  readonly localCoverImage: InputMaybe<SortOrderEnum>;
+  readonly localIcon: InputMaybe<SortOrderEnum>;
+  readonly localLogo: InputMaybe<SortOrderEnum>;
+};
+
 type GhostSettingsFilterInput = {
   readonly accent_color: InputMaybe<StringQueryOperatorInput>;
   readonly active_timezone: InputMaybe<StringQueryOperatorInput>;
@@ -1721,6 +1791,7 @@ type GhostSettingsFilterInput = {
   readonly default_locale: InputMaybe<StringQueryOperatorInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly facebook: InputMaybe<StringQueryOperatorInput>;
+  readonly fields: InputMaybe<GhostSettingsFieldsFilterInput>;
   readonly ghostId: InputMaybe<IntQueryOperatorInput>;
   readonly icon: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
@@ -1811,6 +1882,7 @@ type GhostSettingsSortInput = {
   readonly default_locale: InputMaybe<SortOrderEnum>;
   readonly description: InputMaybe<SortOrderEnum>;
   readonly facebook: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<GhostSettingsFieldsSortInput>;
   readonly ghostId: InputMaybe<SortOrderEnum>;
   readonly icon: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
@@ -3821,6 +3893,7 @@ type Query_fileArgs = {
   size: InputMaybe<IntQueryOperatorInput>;
   sourceInstanceName: InputMaybe<StringQueryOperatorInput>;
   uid: InputMaybe<IntQueryOperatorInput>;
+  url: InputMaybe<StringQueryOperatorInput>;
 };
 
 
@@ -3830,6 +3903,7 @@ type Query_ghostAuthorArgs = {
   count: InputMaybe<GhostPostCountFilterInput>;
   cover_image: InputMaybe<StringQueryOperatorInput>;
   facebook: InputMaybe<StringQueryOperatorInput>;
+  fields: InputMaybe<GhostAuthorFieldsFilterInput>;
   ghostId: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
@@ -3917,6 +3991,7 @@ type Query_ghostPostArgs = {
   feature_image_alt: InputMaybe<StringQueryOperatorInput>;
   feature_image_caption: InputMaybe<StringQueryOperatorInput>;
   featured: InputMaybe<BooleanQueryOperatorInput>;
+  fields: InputMaybe<GhostPostFieldsFilterInput>;
   ghostId: InputMaybe<StringQueryOperatorInput>;
   html: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
@@ -3960,6 +4035,7 @@ type Query_ghostSettingsArgs = {
   default_locale: InputMaybe<StringQueryOperatorInput>;
   description: InputMaybe<StringQueryOperatorInput>;
   facebook: InputMaybe<StringQueryOperatorInput>;
+  fields: InputMaybe<GhostSettingsFieldsFilterInput>;
   ghostId: InputMaybe<IntQueryOperatorInput>;
   icon: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
@@ -5120,6 +5196,11 @@ type GhostTagsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type GhostTagsQueryQuery = { readonly allGhostTag: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string, readonly slug: string, readonly url: string, readonly canonical_url: string | null, readonly accent_color: string | null, readonly id: string, readonly postCount: number | null } }> } };
+
+type GhostTagsSidebarQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type GhostTagsSidebarQueryQuery = { readonly allGhostTag: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string, readonly slug: string, readonly url: string, readonly canonical_url: string | null, readonly accent_color: string | null, readonly id: string, readonly postCount: number | null } }> } };
 
 
 }
