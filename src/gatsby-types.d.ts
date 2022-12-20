@@ -2058,7 +2058,9 @@ type GhostTiers = Node & {
   readonly active: Scalars['Boolean'];
   readonly children: ReadonlyArray<Node>;
   readonly created_at: Maybe<Scalars['Date']>;
+  readonly currency: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
+  readonly ghostId: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
   readonly monthly_price: Maybe<Scalars['Int']>;
@@ -2066,6 +2068,7 @@ type GhostTiers = Node & {
   readonly parent: Maybe<Node>;
   readonly slug: Scalars['String'];
   readonly stripe_prices: Maybe<Scalars['String']>;
+  readonly trial_days: Maybe<Scalars['Int']>;
   readonly type: Maybe<Scalars['String']>;
   readonly updated_at: Maybe<Scalars['Date']>;
   readonly visibility: Scalars['String'];
@@ -2138,7 +2141,9 @@ type GhostTiersFieldSelector = {
   readonly active: InputMaybe<FieldSelectorEnum>;
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly created_at: InputMaybe<FieldSelectorEnum>;
+  readonly currency: InputMaybe<FieldSelectorEnum>;
   readonly description: InputMaybe<FieldSelectorEnum>;
+  readonly ghostId: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly monthly_price: InputMaybe<FieldSelectorEnum>;
@@ -2146,6 +2151,7 @@ type GhostTiersFieldSelector = {
   readonly parent: InputMaybe<NodeFieldSelector>;
   readonly slug: InputMaybe<FieldSelectorEnum>;
   readonly stripe_prices: InputMaybe<FieldSelectorEnum>;
+  readonly trial_days: InputMaybe<FieldSelectorEnum>;
   readonly type: InputMaybe<FieldSelectorEnum>;
   readonly updated_at: InputMaybe<FieldSelectorEnum>;
   readonly visibility: InputMaybe<FieldSelectorEnum>;
@@ -2157,7 +2163,9 @@ type GhostTiersFilterInput = {
   readonly active: InputMaybe<BooleanQueryOperatorInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly created_at: InputMaybe<DateQueryOperatorInput>;
+  readonly currency: InputMaybe<StringQueryOperatorInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
+  readonly ghostId: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly monthly_price: InputMaybe<IntQueryOperatorInput>;
@@ -2165,6 +2173,7 @@ type GhostTiersFilterInput = {
   readonly parent: InputMaybe<NodeFilterInput>;
   readonly slug: InputMaybe<StringQueryOperatorInput>;
   readonly stripe_prices: InputMaybe<StringQueryOperatorInput>;
+  readonly trial_days: InputMaybe<IntQueryOperatorInput>;
   readonly type: InputMaybe<StringQueryOperatorInput>;
   readonly updated_at: InputMaybe<DateQueryOperatorInput>;
   readonly visibility: InputMaybe<StringQueryOperatorInput>;
@@ -2217,7 +2226,9 @@ type GhostTiersSortInput = {
   readonly active: InputMaybe<SortOrderEnum>;
   readonly children: InputMaybe<NodeSortInput>;
   readonly created_at: InputMaybe<SortOrderEnum>;
+  readonly currency: InputMaybe<SortOrderEnum>;
   readonly description: InputMaybe<SortOrderEnum>;
+  readonly ghostId: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
   readonly monthly_price: InputMaybe<SortOrderEnum>;
@@ -2225,6 +2236,7 @@ type GhostTiersSortInput = {
   readonly parent: InputMaybe<NodeSortInput>;
   readonly slug: InputMaybe<SortOrderEnum>;
   readonly stripe_prices: InputMaybe<SortOrderEnum>;
+  readonly trial_days: InputMaybe<SortOrderEnum>;
   readonly type: InputMaybe<SortOrderEnum>;
   readonly updated_at: InputMaybe<SortOrderEnum>;
   readonly visibility: InputMaybe<SortOrderEnum>;
@@ -4020,7 +4032,9 @@ type Query_ghostTiersArgs = {
   active: InputMaybe<BooleanQueryOperatorInput>;
   children: InputMaybe<NodeFilterListInput>;
   created_at: InputMaybe<DateQueryOperatorInput>;
+  currency: InputMaybe<StringQueryOperatorInput>;
   description: InputMaybe<StringQueryOperatorInput>;
+  ghostId: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
   monthly_price: InputMaybe<IntQueryOperatorInput>;
@@ -4028,6 +4042,7 @@ type Query_ghostTiersArgs = {
   parent: InputMaybe<NodeFilterInput>;
   slug: InputMaybe<StringQueryOperatorInput>;
   stripe_prices: InputMaybe<StringQueryOperatorInput>;
+  trial_days: InputMaybe<IntQueryOperatorInput>;
   type: InputMaybe<StringQueryOperatorInput>;
   updated_at: InputMaybe<DateQueryOperatorInput>;
   visibility: InputMaybe<StringQueryOperatorInput>;

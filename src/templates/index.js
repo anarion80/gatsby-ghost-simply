@@ -14,12 +14,11 @@ import { MetaData } from '../components/common/meta'
 * in /utils/siteConfig.js under `postsPerPage`.
 *
 */
-const Index = ({ data, location, pageContext }) => {
+const Index = ({ data, pageContext }) => {
     const posts = data.allGhostPost.edges
 
     return (
         <>
-            <MetaData location={location} />
             <Layout isHome={true} footer={true} isPost={false} bodyClass="is-frontpage">
                 <div className="site-post feed-entry-content container mx-auto pt-10">
                     <div className="feed-entry-wrap max-w-1100 mx-auto">
@@ -60,6 +59,16 @@ Index.propTypes = {
 }
 
 export default Index
+
+export const Head = ({ location }) => {
+    Head.propTypes = {
+        location: PropTypes.shape({
+            pathname: PropTypes.string.isRequired,
+        }).isRequired,
+    }
+
+    return <MetaData location={location} />
+}
 
 // This page query loads all posts sorted descending by published date
 // The `limit` and `skip` values are used for pagination

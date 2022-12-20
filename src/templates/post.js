@@ -18,7 +18,7 @@ import { resolveUrl } from '../utils/relativeUrl'
 * This file renders a single post and loads all the content.
 *
 */
-const Post = ({ data, location, pageContext }) => {
+const Post = ({ data, pageContext }) => {
     const post = data.currentPost
     const prevPost = data.previousPost
     const nextPost = data.nextPost
@@ -34,11 +34,6 @@ const Post = ({ data, location, pageContext }) => {
 
     return (
         <>
-            <MetaData
-                data={data}
-                location={location}
-                type="article"
-            />
             <Helmet>
                 <style type="text/css">{`${post.codeinjection_styles}`}</style>
             </Helmet>
@@ -90,6 +85,21 @@ Post.propTypes = {
 }
 
 export default Post
+
+export const Head = ({ data, location }) => {
+    Head.propTypes = {
+        data: PropTypes.object.isRequired,
+        location: PropTypes.shape({
+            pathname: PropTypes.string.isRequired,
+        }).isRequired,
+    }
+
+    return <MetaData
+        data={data}
+        location={location}
+        type="article"
+    />
+}
 
 export const postQuery = graphql`
     query($slug: String!, $next: String, $prev: String, $primary_tag: String) {

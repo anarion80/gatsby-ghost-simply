@@ -13,7 +13,7 @@ import { resolveUrl } from "../utils/relativeUrl"
 * This file renders a collection of posts tagged with #portfolio tag.
 *
 */
-const Portfolio = ({ data, location, pageContext }) => {
+const Portfolio = ({ data, pageContext }) => {
     //const page = data.ghostPage
     const t = getTranslation(useLang())
     const posts = data.allGhostPost.edges
@@ -57,13 +57,6 @@ const Portfolio = ({ data, location, pageContext }) => {
 
     return (
         <>
-            <MetaData
-                data={data}
-                location={location}
-                title="Portfolio"
-                description="Personal portfolio page"
-                type="WebSite"
-            />
             <Layout footer={true} isPost={false} bodyClass="is-portfolio">
                 <header className="topic-header">
                     <div className="px-4 py-10 lg:py-vw6 lg:pb-8 mx-auto max-w-3xl text-center">
@@ -110,6 +103,23 @@ Portfolio.propTypes = {
 }
 
 export default Portfolio
+
+export const Head = ({ data, location }) => {
+    Head.propTypes = {
+        data: PropTypes.object.isRequired,
+        location: PropTypes.shape({
+            pathname: PropTypes.string.isRequired,
+        }).isRequired,
+    }
+
+    return <MetaData
+        data={data}
+        location={location}
+        title="Portfolio"
+        description="Personal portfolio page"
+        type="WebSite"
+    />
+}
 
 export const portfolioQuery = graphql`
     query {

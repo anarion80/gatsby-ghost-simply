@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
-
 import { Layout } from '../components/common'
 import { MetaData } from '../components/common/meta'
 import ArticleFeaturedImage from '../components/article/ArticleFeaturedImage'
@@ -13,16 +12,11 @@ import ArticleFeaturedImage from '../components/article/ArticleFeaturedImage'
 * This file renders a single page and loads all the content.
 *
 */
-const Page = ({ data, location }) => {
+const Page = ({ data }) => {
     const page = data.ghostPage
 
     return (
         <>
-            <MetaData
-                data={data}
-                location={location}
-                type="website"
-            />
             <Helmet>
                 <style type="text/css">{`${page.codeinjection_styles}`}</style>
             </Helmet>
@@ -58,6 +52,21 @@ Page.propTypes = {
 }
 
 export default Page
+
+export const Head = ({ data, location }) => {
+    Head.propTypes = {
+        data: PropTypes.object.isRequired,
+        location: PropTypes.shape({
+            pathname: PropTypes.string.isRequired,
+        }).isRequired,
+    }
+
+    return <MetaData
+        data={data}
+        location={location}
+        type="website"
+    />
+}
 
 export const postQuery = graphql`
     query($slug: String!) {

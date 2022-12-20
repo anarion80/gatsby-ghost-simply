@@ -12,7 +12,7 @@ import { relativeUrl, resolveUrl } from "../utils/relativeUrl"
 * This file renders a single post and loads all the content.
 *
 */
-const KusiHome = ({ data, location, pageContext }) => {
+const KusiHome = ({ data, pageContext }) => {
     //const page = data.ghostPage
     const posts = data.allGhostPost.edges
     const firstPost = posts[0].node
@@ -20,16 +20,6 @@ const KusiHome = ({ data, location, pageContext }) => {
 
     return (
         <>
-            <MetaData
-                data={data}
-                location={location}
-                title="Documentation"
-                description="Documentation starting page"
-                type="WebSite"
-            />
-            {/* <Helmet>
-                <style type="text/css">{`${page.codeinjection_styles}`}</style>
-            </Helmet> */}
             <Layout footer={true} isPost={false} bodyClass="is-portfolio">
                 <div className="spc-header simply-hero-cover flex items-center justify-center relative min-h-lg py-24 px-4 overflow-hidden">
 
@@ -65,6 +55,23 @@ KusiHome.propTypes = {
 }
 
 export default KusiHome
+
+export const Head = ({ data, location }) => {
+    Head.propTypes = {
+        data: PropTypes.object.isRequired,
+        location: PropTypes.shape({
+            pathname: PropTypes.string.isRequired,
+        }).isRequired,
+    }
+
+    return <MetaData
+        data={data}
+        location={location}
+        title="Documentation"
+        description="Documentation starting page"
+        type="WebSite"
+    />
+}
 
 export const docsHomeQuery = graphql`
     query {
