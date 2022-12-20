@@ -93,27 +93,16 @@ module.exports = {
          *  Utility Plugins
          */
         {
-            resolve: `gatsby-plugin-ghost-manifest`,
+            resolve: `gatsby-plugin-manifest`,
             options: {
+                name: config.siteTitleMeta,
                 short_name: config.shortTitle,
                 start_url: `/`,
                 background_color: config.backgroundColor,
                 theme_color: config.themeColor,
-                display: `minimal-ui`,
+                display: `standalone`,
                 icon: `static/${config.siteIcon}`,
-                legacy: true,
-                query: `
-                {
-                    allGhostSettings {
-                        edges {
-                            node {
-                                title
-                                description
-                            }
-                        }
-                    }
-                }
-              `,
+                cache_busting_mode: `none`, // `query`(default), `name`, or `none`
             },
         },
         {
