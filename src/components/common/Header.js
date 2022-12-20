@@ -1,10 +1,9 @@
 import React, { useEffect } from "react"
 import PropTypes from 'prop-types'
-import { Navigation, SearchWidget, SideNav, NavigationDropDown } from '.'
+import { Navigation, SearchWidget, SideNav, NavigationDropDown, ThemeToggler } from '.'
 import { Link } from 'gatsby'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { StaticImage } from "gatsby-plugin-image"
-import ThemeToggler from "."
 import { relativeUrl } from "../../utils/relativeUrl"
 
 /**
