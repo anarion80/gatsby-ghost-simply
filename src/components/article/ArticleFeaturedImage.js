@@ -10,15 +10,9 @@ const ArticleFeaturedImage = ({ article, figureClass, divClass, imgClass, zoomab
         <figure className={`post-image ` + figureClass}>
             {zoomable ?
                 <ZoomableMedia>
-                    <GatsbyImage image={image} alt={article.title}
-                    //  style={{
-                    //     position: `absolute`,
-                    //     height: `100%`,
-                    //     width: `100%`,
-                    //     inset: 0,
-                    //     objectFit: `cover`,
-                    // }} 
-                    className={divClass} imgClassName={imgClass} />
+                    <GatsbyImage
+                        image={image} alt={article.title}
+                        className={divClass} imgClassName={imgClass} />
                 </ZoomableMedia>
                 :
                 <GatsbyImage image={image} alt={article.title} className={divClass} imgClassName={imgClass} />
