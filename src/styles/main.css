@@ -2284,7 +2284,7 @@ a > code[class*="language-"] {
 .post-body ul li:before {
     box-sizing: border-box;
     display: inline-block;
-    margin-left: -22px;
+    margin-left: -36px;
     position: absolute;
     text-align: right;
 }
