@@ -92,7 +92,7 @@ const DefaultLayout = ({ data, children, bodyClass, footer, isPost }) => {
     return (
         <>
             <Helmet>
-                <body className={bodyClass} />
+                <body className={localStorage.theme === `dark` || (!(`theme` in localStorage) && window.matchMedia(`(prefers-color-scheme: dark)`).matches) ? bodyClass + ` dark` : bodyClass + `light`} />
             </Helmet>
             <CookieConsent
                 location="none"
