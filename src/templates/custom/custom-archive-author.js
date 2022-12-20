@@ -103,7 +103,7 @@ export const archiveAuthorsQuery = graphql`
                             height: 628
 
                             placeholder: BLURRED
-                            formats: [AUTO, WEBP, AVIF]
+                            formats: [AUTO, WEBP]
                             )
                         }
                     }
@@ -114,7 +114,7 @@ export const archiveAuthorsQuery = graphql`
                                         fit: COVER, cropFocus: ATTENTION
                                     }
                                     placeholder: BLURRED
-                                    formats: [AUTO, WEBP, AVIF]
+                                    formats: [AUTO, WEBP]
                                     )
                                 }
                             }
@@ -134,7 +134,7 @@ export const archiveAuthorsQuery = graphql`
                     }
                     width: 2000
                     placeholder: BLURRED
-                    formats: [AUTO, WEBP, AVIF]
+                    formats: [AUTO, WEBP]
                     )
                 }
             }

@@ -127,7 +127,7 @@ export const portfolioQuery = graphql`
                             width: 1000
 
                             placeholder: BLURRED
-                            formats: [AUTO, WEBP, AVIF]
+                            formats: [AUTO, WEBP]
                             )
                         }
                     }
@@ -141,7 +141,7 @@ export const portfolioQuery = graphql`
                                 width: 36
                                 height: 36
                                 placeholder: BLURRED
-                                formats: [AUTO, WEBP, AVIF]
+                                formats: [AUTO, WEBP]
                                 )
                             }
                         }

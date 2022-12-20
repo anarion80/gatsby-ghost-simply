@@ -163,7 +163,7 @@ const DefaultLayoutSettingsQuery = (props) => {
                                 }
                                 height: 30
                                 placeholder: BLURRED
-                                formats: [AUTO, WEBP, AVIF]
+                                formats: [AUTO, WEBP]
                                 )
                             }
                         }
@@ -176,7 +176,7 @@ const DefaultLayoutSettingsQuery = (props) => {
                                 width: 36
                                 height: 36
                                 placeholder: BLURRED
-                                formats: [AUTO, WEBP, AVIF]
+                                formats: [AUTO, WEBP]
                                 )
                             }
                         }

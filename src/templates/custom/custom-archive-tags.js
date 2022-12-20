@@ -108,7 +108,7 @@ export const archiveTagsQuery = graphql`
                             }
                             width: 600
                             placeholder: BLURRED
-                            formats: [AUTO, WEBP, AVIF]
+                            formats: [AUTO, WEBP]
                             )
                         }
                     }
@@ -129,7 +129,7 @@ export const archiveTagsQuery = graphql`
                     }
                     width: 2000
                     placeholder: BLURRED
-                    formats: [AUTO, WEBP, AVIF]
+                    formats: [AUTO, WEBP]
                     )
                 }
             }

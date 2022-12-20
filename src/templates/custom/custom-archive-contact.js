@@ -157,7 +157,7 @@ export const archiveContactQuery = graphql`
                     }
                     width: 2000
                     placeholder: BLURRED
-                    formats: [AUTO, WEBP, AVIF]
+                    formats: [AUTO, WEBP]
                     )
                 }
             }

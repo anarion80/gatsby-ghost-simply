@@ -70,7 +70,7 @@ export const postQuery = graphql`
                     }
                     width: 2000
                     placeholder: BLURRED
-                    formats: [AUTO, WEBP, AVIF]
+                    formats: [AUTO, WEBP]
                     )
                 }
             }

@@ -118,7 +118,7 @@ export const postQuery = graphql`
                     }
                     width: 2000
                     placeholder: BLURRED
-                    formats: [AUTO, WEBP, AVIF]
+                    formats: [AUTO, WEBP]
                     )
                 }
             }
@@ -132,7 +132,7 @@ export const postQuery = graphql`
                         width: 36
                         height: 36
                         placeholder: BLURRED
-                        formats: [AUTO, WEBP, AVIF]
+                        formats: [AUTO, WEBP]
                         )
                     }
                 }
@@ -151,7 +151,7 @@ export const postQuery = graphql`
                     }
                 aspectRatio: 1.84
                 placeholder: BLURRED
-                formats: [AUTO, WEBP, AVIF]
+                formats: [AUTO, WEBP]
                 )
             }
         }
@@ -169,7 +169,7 @@ export const postQuery = graphql`
                     }
                 aspectRatio: 1.84
                 placeholder: BLURRED
-                formats: [AUTO, WEBP, AVIF]
+                formats: [AUTO, WEBP]
                 )
             }
         }
@@ -195,7 +195,7 @@ export const postQuery = graphql`
                             width: 720
 
                             placeholder: BLURRED
-                            formats: [AUTO, WEBP, AVIF]
+                            formats: [AUTO, WEBP]
                             )
                         }
                     }
