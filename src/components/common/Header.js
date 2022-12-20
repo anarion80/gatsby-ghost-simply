@@ -23,7 +23,7 @@ const Header = ({ site, hasDropDown }) => {
 
     return (
         <>
-            <header className="header bg-header w-full text-sm flex items-center sticky top-0 z-20">
+            <header className="header js-header h-16 w-full text-sm flex items-center sticky top-0 z-20">
                 <div className="header-wrap mx-auto flex items-center flex-auto px-4 w-full max-w-extreme">
                     <div className="header-left mr-5 flex flex-none items-center">
                         <Link
@@ -35,8 +35,8 @@ const Header = ({ site, hasDropDown }) => {
                             data-event-non-interaction="true">
 
                             {site.logo ?
-                                <GatsbyImage image={getImage(site.localLogo)} className="header-logo-img max-h-8 logo-default" alt={site.title} />
-                                : <StaticImage src="../../images/ghost-icon.png" className="header-logo-img max-h-8 logo-default" alt={site.title} width="115" height="30"/>
+                                <GatsbyImage image={getImage(site.localLogo)} className="header-logo-img max-h-9 logo-default" alt={site.title} />
+                                : <StaticImage src="../../images/ghost-icon.png" className="header-logo-img max-h-9 logo-default" alt={site.title} width="115" height="30"/>
                             }
                         </Link>
                     </div>
@@ -51,10 +51,10 @@ const Header = ({ site, hasDropDown }) => {
                         :
                         null}
 
-                    <div className="header-right flex-none flex justify-end items-center u-menu-color">
+                    <div className="header-right flex-none flex justify-end items-center">
                         <ThemeToggler>
                             {({ toggleTheme }) => (
-                                <a role="button" className="js-dark-mode button is-white items-center hidden mr-2 md:flex" aria-label="Dark and Light Mode" onClick={() => toggleTheme(
+                                <a role="button" className="js-dark-mode button is-white items-center mr-2" aria-label="Dark and Light Mode" onClick={() => toggleTheme(
                                     (localStorage.theme === `dark` || (!(`theme` in localStorage) && window.matchMedia(`(prefers-color-scheme: dark)`).matches)) ? `light` : `dark`)}>
                                     <svg className="icon icon--moon m-0" style={{ marginRight: `calc(-0.5em - 1px)` }}><use xlinkHref="#icon-moon"></use></svg>
                                     <svg className="icon icon--sunny m-0 hidden" style={{ marginLeft: `calc(-0.5em - 1px)` }}><use xlinkHref="#icon-sunny"></use></svg>
@@ -63,7 +63,7 @@ const Header = ({ site, hasDropDown }) => {
                         </ThemeToggler>
 
                         <SearchWidget />
-                        <div className="js-menu-toggle menu-burger button is-white relative ml-2 lg:hidden"><span></span><span></span><span></span></div>
+                        <div className="js-menu-toggle menu-burger button is-white relative lg:hidden"><span></span><span></span><span></span></div>
                     </div>
                 </div>
             </header>
