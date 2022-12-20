@@ -14,18 +14,18 @@ const HomeFirstPost = ({ post }) => {
                 <Link to={relativeUrl(post.url)} className="hhp-image" aria-label={post.title}>
                     <div className="hhp-img mb-4 relative h-40">
                         {post.feature_image &&
-                            <GatsbyImage image={image} alt={post.title} className="u-image inset-0 absolute"/>
+                            <GatsbyImage image={image} alt={post.title} className="inset-image"/>
                         }
                     </div>
                 </Link>
 
                 <div className="hhp-body mb-4">
-                    <h1 className="hhp-title text-3xl text-title mb-3 lineClamp-2 overflow-hidden">
+                    <h1 className="hhp-title text-2xl text-title mb-3 line-clamp-2">
                         <Link to={relativeUrl(post.url)} className="block" aria-label={post.title}>{post.title}</Link>
                     </h1>
 
                     {post.excerpt &&
-                        <div className="hhp-excerpt text-lg leading-snug overflow-hidden lineClamp mb-3 text-gray-500">
+                        <div className="hhp-excerpt text-lg leading-snug line-clamp-3 mb-3 text-gray-500">
                             <Link to={relativeUrl(post.url)} aria-label={post.title}>{post.excerpt.split(` `).splice(0,30).join(` `)}</Link>
                         </div>
                     }

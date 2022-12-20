@@ -10,22 +10,22 @@ const HomeMediumPost = ({ post }) => {
 
     return (
         <>
-            <article className="homeHero-mediumCard flex-auto w-full mt-8 lg:ml-6 lg:mt-0">
+            <article className="homeHero-mediumCard flex-auto w-full mt-8 lg:ml-6 lg:mt-0 lg:max-w-xs">
                 <Link to={relativeUrl(post.url)} className="hhp-image" aria-label={post.title}>
                     <div className="hhp-img relative h-40 mb-4">
                         {post.feature_image &&
-                            <GatsbyImage image={image} alt={post.title} className="u-image inset-0 absolute"/>
+                            <GatsbyImage image={image} alt={post.title} className="inset-image"/>
                         }
                     </div>
                 </Link>
 
                 <div className="hhp-body mb-4">
-                    <h2 className="hhp-title text-2xl mb-3 leading-tight text-title lineClamp-2 overflow-hidden">
+                    <h2 className="hhp-title text-2xl mb-3 leading-tight text-title line-clamp-2">
                         <Link to={relativeUrl(post.url)} className="block" aria-label={post.title}>{post.title}</Link>
                     </h2>
 
                     {post.excerpt &&
-                        <div className="hhp-excerpt text-lg leading-snug overflow-hidden lineClamp mb-3 text-gray-500">
+                        <div className="hhp-excerpt text-lg leading-snug line-clamp-3 mb-3 text-gray-500">
                             <Link to={relativeUrl(post.url)} aria-label={post.title}>{post.excerpt.split(` `).splice(0,30).join(` `)}</Link>
                         </div>
                     }

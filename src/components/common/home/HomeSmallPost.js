@@ -14,7 +14,7 @@ const HomeSmallPost = ({ post, last }) => {
                 <div className="hhp-smallCard-img w-1/3 relative flex-none mr-5">
 
                     {post.feature_image &&
-                        <GatsbyImage image={image} alt={post.title} className="u-image inset-0 absolute"/>
+                        <GatsbyImage image={image} alt={post.title} className="inset-image"/>
                     }
 
                 </div>
