@@ -1,8 +1,10 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import SidebarPostCard from './SidebarPostCard'
+import { useLang, getTranslation } from '../../../utils/use-lang'
 
 const SidebarPost = () => {
+    const t = getTranslation(useLang())
     const latestPosts = useStaticQuery(graphql`
         query GhostSidebarLatestPostsQuery {
         allGhostPost(
@@ -22,7 +24,7 @@ const SidebarPost = () => {
     return (
         <aside className="sidebar col s12 l4 flex flex-col justify-start mt-12 lg:mt-0">
             <div className="flex flex-col flex-1">
-                <SidebarPostCard widgetTitle="Latest Posts" widgetPosts={latestPosts} />
+                <SidebarPostCard widgetTitle={t(`Latest Posts`)} widgetPosts={latestPosts} />
             </div>
         </aside>
     )
