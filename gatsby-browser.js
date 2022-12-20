@@ -27,6 +27,6 @@ var trustAllScripts = function () {
     }
 };
 
-exports.onRouteUpdate = function () {
+export const onRouteUpdate = function () {
     trustAllScripts();
 };
