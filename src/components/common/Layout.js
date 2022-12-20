@@ -194,20 +194,4 @@ const DefaultLayoutSettingsQuery = (props) => {
     return <DefaultLayout data={data} {...props} />
 }
 
-// export const Head = ({ location, params, data, pageContext }) => {
-//     const site = data.allGhostSettings.edges[0].node
-//     return (
-//         <>
-//             <html lang={site.lang} />
-//             <style type="text/css">{`${site.codeinjection_styles}`}</style>
-//             <style type="text/css">{`${site.codeinjection_head}`}</style>
-//             <style type="text/css">{`:root {--ghost-accent-color: ${site.accent_color};}`}</style>
-//             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css"></link>
-//             {/*<script src="/scripts/main.js" type="text/javascript"></script>*/}
-//             {/* <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" as="style" onLoad="this.onload=null;this.rel='stylesheet'" /> */}
-
-//             <body className={pageContext.bodyClass} />
-//         </>
-//     )
-// }
 export default DefaultLayoutSettingsQuery
