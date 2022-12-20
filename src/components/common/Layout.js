@@ -35,9 +35,9 @@ import audio from "../../utils/audio"
 import video from "../../utils/video"
 import beforeAfter from "../../utils/before-after"
 import siteConfig from "../../utils/siteConfig"
-//import CookieConsent, { Cookies } from "react-cookie-consent"
+import CookieConsent, { Cookies } from "react-cookie-consent"
 import { useLocation } from "@gatsbyjs/reach-router"// this helps tracking the location
-//import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies'
+import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies'
 
 /**
 * Main layout component
@@ -81,7 +81,7 @@ const DefaultLayout = ({ data, children, bodyClass, footer, isPost }) => {
 
     return (
         <>
-            {/* <CookieConsent
+            <CookieConsent
                 location="none"
                 buttonText="Accept"
                 declineButtonText="Decline"
@@ -109,7 +109,7 @@ const DefaultLayout = ({ data, children, bodyClass, footer, isPost }) => {
                 }}>
                 <span id="cookieconsent:desc" className="cc-message">This website uses cookies to enhance user experience. Please check the <a aria-label="learn more about cookies" role="button" tabIndex="0" className="cc-link" href={`${siteConfig.siteUrl}/privacy`} rel="noopener noreferrer nofollow" target="_blank">privacy policy</a> for more details.</span>
 
-            </CookieConsent> */}
+            </CookieConsent>
             <div className="simply-viewport flexColumnTop">
                 <Header site={site} hasDropDown={hasDropDown} />
 
