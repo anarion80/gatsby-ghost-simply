@@ -10,6 +10,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { MetaData } from '../../components/common/meta'
 import DateTimeComponent from '../../components/common/DateTimeComponent'
 import { useLang, getTranslation } from '../../utils/use-lang'
+import Sidebar from '../../components/common/sidebar/Sidebar'
 
 /**
 * Main index page (home page)
@@ -21,7 +22,7 @@ import { useLang, getTranslation } from '../../utils/use-lang'
 */
 const IndexMediumSidebar = ({ data, location, pageContext }) => {
     const posts = data.allGhostPost.edges
-    const tags = data.allGhostTag.edges
+    //const tags = data.allGhostTag.edges
     const post = data.ghostPost
     const t = getTranslation(useLang())
     //const featuredPost = posts.filter(item => item.node.featured).length > 0 ? posts.filter(item => item.node.featured)[0].node : undefined
@@ -104,7 +105,8 @@ const IndexMediumSidebar = ({ data, location, pageContext }) => {
                         <div className="col s12 l1"></div>
 
                         {/* {!-- sidebar --} */}
-                        <aside className="sidebar col s12 l4 flex flex-col flex-1 justify-start mt-12 lg:mt-0">
+                        <Sidebar posts={posts.filter(item => item.node.featured)}/>
+                        {/* <aside className="sidebar col s12 l4 flex flex-col flex-1 justify-start mt-12 lg:mt-0">
                             <div className="lg:sticky lg:top-28">
                                 <h3 className="uppercase text-sm mb-4">{t(`Discover_more_of_what_matters_to_you`)}</h3>
                                 <div className="buttons">
@@ -112,7 +114,8 @@ const IndexMediumSidebar = ({ data, location, pageContext }) => {
                                 </div>
                                 <hr />
                             </div>
-                        </aside>
+
+                        </aside> */}
                     </div>
                 </div>
             </Layout>
