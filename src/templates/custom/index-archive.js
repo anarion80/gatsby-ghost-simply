@@ -29,7 +29,7 @@ const IndexArchive = ({ data, location, pageContext }) => {
 
                 <header className="author-header">
                     <div className="px-4 py-12 md:py-vw6 mx-auto max-w-3xl text-center">
-                        <h1 className="text-3xl md:text-4xl text-title">The full archive</h1>
+                        <h1 className="text-3xl md:text-4xl text-title">{t(`The_full_archive`)}</h1>
                         <div className="mt-5 text-lg text-gray-500">{`${t(`Total_number_of_posts`)}: ${data.allGhostPost.totalCount}`}</div>
                     </div>
                 </header>
