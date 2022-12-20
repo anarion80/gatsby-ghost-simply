@@ -94,9 +94,9 @@ const Author = ({ data, pageContext }) => {
                                 </div>
                             ))}
                         </div>
+                        <Pagination pageContext={pageContext} />
                     </div>
                 </div>
-                <Pagination pageContext={pageContext} />
             </Layout>
         </>
     )
