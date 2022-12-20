@@ -206,12 +206,14 @@ module.exports = {
                         {
                             family: `PT Serif`,
                             variants: [`400`, `700`, `400i`],
+                            subsets: [`latin-ext`],
                             fontDisplay: `swap`,
                             strategy: config.fontStrategy,
                         },
                         {
                             family: `Inter`,
                             variants: [`400`, `500`, `600`, `700`],
+                            subsets: [`latin-ext`],
                             fontDisplay: `swap`,
                             strategy: config.fontStrategy,
                         },
