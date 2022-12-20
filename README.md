@@ -59,6 +59,7 @@ Rewritten from Handlebars theme to React/Gatsby.
 - Medium style image zoom
 - [GDPR Cookie Consent and Google/Facebook tracking](https://github.com/andrezimpel/gatsby-plugin-gdpr-cookies)
 - New Ghost cards (GIF, buttons, NFT, callouts, toggles, quotes, products, audio, video, files, headers)
+- Members subscribing via email
 
 ## ❌ What is not yet working
 - [Logo Light / Dark Mode](https://godofredo.ninja/ghost-theme/simply/settings/#logolightdarkmode)
@@ -66,7 +67,7 @@ Rewritten from Handlebars theme to React/Gatsby.
   - [AMP](https://github.com/godofredoninja/Hodor-AMP-Ghost) Template
 - Pagination Infinite Scroll - not for static sites
 - Comments
-- Membership features
+- All Membership features
 
 ## ✏ What could be improved
 - Move videoResponsive and resizeImageGalleries to build time using some rehype plugin

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Navigation, TagCloud, SocialMediaWidget } from '.'
 import { useLang, getTranslation } from '../../utils/use-lang'
+import ghostConfig from '../../../.ghost.json'
 /**
 * Footer component
 *
@@ -10,6 +11,38 @@ import { useLang, getTranslation } from '../../utils/use-lang'
 
 const FooterDark = ({ site }) => {
     const t = getTranslation(useLang())
+
+    const handleSend = (event) => {
+        const form = document.querySelector(`#subscribe_form`)
+        const submitResponse = document.querySelector(`#response`)
+        const formURL = `${ghostConfig.production.apiUrl}/members/api/send-magic-link/`
+        const email = Array.from(form).filter(item => item.id)[0].value
+        const body = JSON.stringify({ email: email, emailType: `subscribe` })
+        event.preventDefault()
+
+        console.log(`Addinng ` + email)
+        submitResponse.innerHTML = `Wysyłanie...`
+        submitResponse.classList.remove(`hidden`)
+
+        // Create the AJAX request
+        const xhr = new XMLHttpRequest()
+        xhr.open(form.method, formURL, true)
+        xhr.setRequestHeader(`Accept`, `application/json; charset=utf-8`)
+        xhr.setRequestHeader(`Content-Type`, `application/json; charset=UTF-8`)
+
+        // Send the collected data as JSON
+        xhr.send(body)
+
+        xhr.onloadend = (response) => {
+            if (response.target.status === 200 || response.target.status === 201) {
+                form.reset()
+                submitResponse.innerHTML = `Sent!`
+            } else {
+                submitResponse.innerHTML = `Error! Try again!`
+                console.error((response))
+            }
+        }
+    }
 
     return (
         <>
@@ -45,11 +78,18 @@ const FooterDark = ({ site }) => {
                                     <p className="mb-4">{t(`Stay_up_to_date__Get_all_the_latest___greatest_posts_delivered_straight_to_your_inbox`)}</p>
 
                                     {/*{!-- Form subscribe --}*/}
-                                    <form className="max-w-sm simply-form" data-members-form="subscribe">
+                                    <form
+                                        className="max-w-sm simply-form"
+                                        data-members-form="subscribe"
+                                        id="subscribe_form"
+                                        method="POST"
+                                        onSubmit={handleSend}
+                                    >
                                         <input
                                             className="footer-form-input"
                                             data-members-email
                                             type="email"
+                                            id="email"
                                             placeholder="youremail@example.com"
                                             aria-label="youremail@example.com"
                                             autoComplete="off"
@@ -63,7 +103,7 @@ const FooterDark = ({ site }) => {
                                         </button>
 
                                         {/*{!-- success --}*/}
-                                        <div className="message-success mx-auto max-w-xl w-full bg-success text-white p-2 rounded-md mt-4 hidden text-sm"
+                                        <div className="message-success mx-auto max-w-xl w-full bg-success text-white p-2 rounded-md mt-4 hidden text-sm" id="response"
                                             dangerouslySetInnerHTML={{ __html: t(`_strong_Great___strong__Check_your_inbox_and_click_the_link_to_confirm_your_subscription`) }} >
                                         </div>
 
