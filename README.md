@@ -1,5 +1,7 @@
 # Gatsby Starter Ghost with Simply Theme
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c56f0ee6-d093-4f14-8a30-c998f416ec62/deploy-status)](https://gatsby-ghost-simply.netlify.app)
+
 A starter template to build lightning fast websites with [Ghost](https://ghost.org) (as headless CMS in this case) & [Gatsby](https://gatsbyjs.org), using the excellent [Simply Ghost Theme](https://github.com/godofredoninja/simply).
 Rewritten from Handlebars theme to React/Gatsby.
 
