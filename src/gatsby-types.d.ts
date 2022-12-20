@@ -414,7 +414,6 @@ type File = Node & {
   readonly size: Scalars['Int'];
   readonly sourceInstanceName: Scalars['String'];
   readonly uid: Scalars['Int'];
-  readonly url: Maybe<Scalars['String']>;
 };
 
 
@@ -561,7 +560,6 @@ type FileFieldSelector = {
   readonly size: InputMaybe<FieldSelectorEnum>;
   readonly sourceInstanceName: InputMaybe<FieldSelectorEnum>;
   readonly uid: InputMaybe<FieldSelectorEnum>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
 };
 
 type FileFilterInput = {
@@ -607,7 +605,6 @@ type FileFilterInput = {
   readonly size: InputMaybe<IntQueryOperatorInput>;
   readonly sourceInstanceName: InputMaybe<StringQueryOperatorInput>;
   readonly uid: InputMaybe<IntQueryOperatorInput>;
-  readonly url: InputMaybe<StringQueryOperatorInput>;
 };
 
 type FileGroupConnection = {
@@ -694,7 +691,6 @@ type FileSortInput = {
   readonly size: InputMaybe<SortOrderEnum>;
   readonly sourceInstanceName: InputMaybe<SortOrderEnum>;
   readonly uid: InputMaybe<SortOrderEnum>;
-  readonly url: InputMaybe<SortOrderEnum>;
 };
 
 type FloatQueryOperatorInput = {
@@ -945,7 +941,6 @@ type GhostNavigationSortInput = {
 };
 
 type GhostPage = Node & {
-  readonly access: Maybe<Scalars['Boolean']>;
   readonly authors: ReadonlyArray<Maybe<GhostAuthor>>;
   readonly canonical_url: Maybe<Scalars['String']>;
   readonly children: ReadonlyArray<Node>;
@@ -953,7 +948,6 @@ type GhostPage = Node & {
   readonly codeinjection_head: Maybe<Scalars['String']>;
   readonly codeinjection_styles: Maybe<Scalars['String']>;
   readonly comment_id: Maybe<Scalars['String']>;
-  readonly comments: Maybe<Scalars['Boolean']>;
   readonly created_at: Scalars['Date'];
   readonly custom_excerpt: Maybe<Scalars['String']>;
   readonly custom_template: Maybe<Scalars['String']>;
@@ -963,7 +957,6 @@ type GhostPage = Node & {
   readonly feature_image_alt: Maybe<Scalars['String']>;
   readonly feature_image_caption: Maybe<Scalars['String']>;
   readonly featured: Scalars['Boolean'];
-  readonly ghostId: Maybe<Scalars['String']>;
   readonly html: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
@@ -1063,7 +1056,6 @@ type GhostPageEdge = {
 };
 
 type GhostPageFieldSelector = {
-  readonly access: InputMaybe<FieldSelectorEnum>;
   readonly authors: InputMaybe<GhostAuthorFieldSelector>;
   readonly canonical_url: InputMaybe<FieldSelectorEnum>;
   readonly children: InputMaybe<NodeFieldSelector>;
@@ -1071,7 +1063,6 @@ type GhostPageFieldSelector = {
   readonly codeinjection_head: InputMaybe<FieldSelectorEnum>;
   readonly codeinjection_styles: InputMaybe<FieldSelectorEnum>;
   readonly comment_id: InputMaybe<FieldSelectorEnum>;
-  readonly comments: InputMaybe<FieldSelectorEnum>;
   readonly created_at: InputMaybe<FieldSelectorEnum>;
   readonly custom_excerpt: InputMaybe<FieldSelectorEnum>;
   readonly custom_template: InputMaybe<FieldSelectorEnum>;
@@ -1081,7 +1072,6 @@ type GhostPageFieldSelector = {
   readonly feature_image_alt: InputMaybe<FieldSelectorEnum>;
   readonly feature_image_caption: InputMaybe<FieldSelectorEnum>;
   readonly featured: InputMaybe<FieldSelectorEnum>;
-  readonly ghostId: InputMaybe<FieldSelectorEnum>;
   readonly html: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
@@ -1112,7 +1102,6 @@ type GhostPageFieldSelector = {
 };
 
 type GhostPageFilterInput = {
-  readonly access: InputMaybe<BooleanQueryOperatorInput>;
   readonly authors: InputMaybe<GhostAuthorFilterListInput>;
   readonly canonical_url: InputMaybe<StringQueryOperatorInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -1120,7 +1109,6 @@ type GhostPageFilterInput = {
   readonly codeinjection_head: InputMaybe<StringQueryOperatorInput>;
   readonly codeinjection_styles: InputMaybe<StringQueryOperatorInput>;
   readonly comment_id: InputMaybe<StringQueryOperatorInput>;
-  readonly comments: InputMaybe<BooleanQueryOperatorInput>;
   readonly created_at: InputMaybe<DateQueryOperatorInput>;
   readonly custom_excerpt: InputMaybe<StringQueryOperatorInput>;
   readonly custom_template: InputMaybe<StringQueryOperatorInput>;
@@ -1130,7 +1118,6 @@ type GhostPageFilterInput = {
   readonly feature_image_alt: InputMaybe<StringQueryOperatorInput>;
   readonly feature_image_caption: InputMaybe<StringQueryOperatorInput>;
   readonly featured: InputMaybe<BooleanQueryOperatorInput>;
-  readonly ghostId: InputMaybe<StringQueryOperatorInput>;
   readonly html: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
@@ -1202,7 +1189,6 @@ type GhostPageGroupConnection_sumArgs = {
 };
 
 type GhostPageSortInput = {
-  readonly access: InputMaybe<SortOrderEnum>;
   readonly authors: InputMaybe<GhostAuthorSortInput>;
   readonly canonical_url: InputMaybe<SortOrderEnum>;
   readonly children: InputMaybe<NodeSortInput>;
@@ -1210,7 +1196,6 @@ type GhostPageSortInput = {
   readonly codeinjection_head: InputMaybe<SortOrderEnum>;
   readonly codeinjection_styles: InputMaybe<SortOrderEnum>;
   readonly comment_id: InputMaybe<SortOrderEnum>;
-  readonly comments: InputMaybe<SortOrderEnum>;
   readonly created_at: InputMaybe<SortOrderEnum>;
   readonly custom_excerpt: InputMaybe<SortOrderEnum>;
   readonly custom_template: InputMaybe<SortOrderEnum>;
@@ -1220,7 +1205,6 @@ type GhostPageSortInput = {
   readonly feature_image_alt: InputMaybe<SortOrderEnum>;
   readonly feature_image_caption: InputMaybe<SortOrderEnum>;
   readonly featured: InputMaybe<SortOrderEnum>;
-  readonly ghostId: InputMaybe<SortOrderEnum>;
   readonly html: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
@@ -1594,7 +1578,6 @@ type GhostSettings = Node & {
   readonly default_locale: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
   readonly facebook: Maybe<Scalars['String']>;
-  readonly fields: Maybe<GhostSettingsFields>;
   readonly ghostId: Maybe<Scalars['Int']>;
   readonly icon: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
@@ -1689,7 +1672,6 @@ type GhostSettingsFieldSelector = {
   readonly default_locale: InputMaybe<FieldSelectorEnum>;
   readonly description: InputMaybe<FieldSelectorEnum>;
   readonly facebook: InputMaybe<FieldSelectorEnum>;
-  readonly fields: InputMaybe<GhostSettingsFieldsFieldSelector>;
   readonly ghostId: InputMaybe<FieldSelectorEnum>;
   readonly icon: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
@@ -1727,26 +1709,6 @@ type GhostSettingsFieldSelector = {
   readonly version: InputMaybe<FieldSelectorEnum>;
 };
 
-type GhostSettingsFields = {
-  readonly localIcon: Maybe<Scalars['String']>;
-  readonly localLogo: Maybe<Scalars['String']>;
-};
-
-type GhostSettingsFieldsFieldSelector = {
-  readonly localIcon: InputMaybe<FieldSelectorEnum>;
-  readonly localLogo: InputMaybe<FieldSelectorEnum>;
-};
-
-type GhostSettingsFieldsFilterInput = {
-  readonly localIcon: InputMaybe<StringQueryOperatorInput>;
-  readonly localLogo: InputMaybe<StringQueryOperatorInput>;
-};
-
-type GhostSettingsFieldsSortInput = {
-  readonly localIcon: InputMaybe<SortOrderEnum>;
-  readonly localLogo: InputMaybe<SortOrderEnum>;
-};
-
 type GhostSettingsFilterInput = {
   readonly accent_color: InputMaybe<StringQueryOperatorInput>;
   readonly active_timezone: InputMaybe<StringQueryOperatorInput>;
@@ -1759,7 +1721,6 @@ type GhostSettingsFilterInput = {
   readonly default_locale: InputMaybe<StringQueryOperatorInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly facebook: InputMaybe<StringQueryOperatorInput>;
-  readonly fields: InputMaybe<GhostSettingsFieldsFilterInput>;
   readonly ghostId: InputMaybe<IntQueryOperatorInput>;
   readonly icon: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
@@ -1850,7 +1811,6 @@ type GhostSettingsSortInput = {
   readonly default_locale: InputMaybe<SortOrderEnum>;
   readonly description: InputMaybe<SortOrderEnum>;
   readonly facebook: InputMaybe<SortOrderEnum>;
-  readonly fields: InputMaybe<GhostSettingsFieldsSortInput>;
   readonly ghostId: InputMaybe<SortOrderEnum>;
   readonly icon: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
@@ -3849,7 +3809,6 @@ type Query_fileArgs = {
   size: InputMaybe<IntQueryOperatorInput>;
   sourceInstanceName: InputMaybe<StringQueryOperatorInput>;
   uid: InputMaybe<IntQueryOperatorInput>;
-  url: InputMaybe<StringQueryOperatorInput>;
 };
 
 
@@ -3879,7 +3838,6 @@ type Query_ghostAuthorArgs = {
 
 
 type Query_ghostPageArgs = {
-  access: InputMaybe<BooleanQueryOperatorInput>;
   authors: InputMaybe<GhostAuthorFilterListInput>;
   canonical_url: InputMaybe<StringQueryOperatorInput>;
   children: InputMaybe<NodeFilterListInput>;
@@ -3887,7 +3845,6 @@ type Query_ghostPageArgs = {
   codeinjection_head: InputMaybe<StringQueryOperatorInput>;
   codeinjection_styles: InputMaybe<StringQueryOperatorInput>;
   comment_id: InputMaybe<StringQueryOperatorInput>;
-  comments: InputMaybe<BooleanQueryOperatorInput>;
   created_at: InputMaybe<DateQueryOperatorInput>;
   custom_excerpt: InputMaybe<StringQueryOperatorInput>;
   custom_template: InputMaybe<StringQueryOperatorInput>;
@@ -3897,7 +3854,6 @@ type Query_ghostPageArgs = {
   feature_image_alt: InputMaybe<StringQueryOperatorInput>;
   feature_image_caption: InputMaybe<StringQueryOperatorInput>;
   featured: InputMaybe<BooleanQueryOperatorInput>;
-  ghostId: InputMaybe<StringQueryOperatorInput>;
   html: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
@@ -3992,7 +3948,6 @@ type Query_ghostSettingsArgs = {
   default_locale: InputMaybe<StringQueryOperatorInput>;
   description: InputMaybe<StringQueryOperatorInput>;
   facebook: InputMaybe<StringQueryOperatorInput>;
-  fields: InputMaybe<GhostSettingsFieldsFilterInput>;
   ghostId: InputMaybe<IntQueryOperatorInput>;
   icon: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
