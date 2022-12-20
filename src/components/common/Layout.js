@@ -12,6 +12,7 @@ import {
 
 // Styles
 import '../../styles/main.css'
+import '../../styles/ghost.css'
 import '../../styles/cards/audio.css'
 import '../../styles/cards/before-after.css'
 import '../../styles/cards/blockquote.css'
