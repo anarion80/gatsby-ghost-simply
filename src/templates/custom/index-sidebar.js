@@ -28,7 +28,7 @@ const IndexSidebar = ({ data, location, pageContext }) => {
                         <div className="row">
                             <div className="col s12 l7">
                                 <div className="feed-entry-content">
-                                    <div className="feed-entry-wrap slist">
+                                    <div className="feed-entry-wrap slist ss3">
                                         {posts.map(item => <StoryGrid key={item.node.id} post={item.node} />)}
                                     </div>
                                 </div>
