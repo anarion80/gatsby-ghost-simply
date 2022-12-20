@@ -12,7 +12,7 @@ const Pagination = ({ pageContext }) => {
             <div>
                 {previousPagePath && (
 
-                    <Link to={previousPagePath} rel="prev" className="button is-primary text-sm font-medium hidden md:flex gh-portal-close">
+                    <Link to={previousPagePath} rel="prev" className="button is-primary text-sm font-medium md:flex gh-portal-close">
                             ← {t(`Newer_Posts`)}
                     </Link>
 
@@ -22,7 +22,7 @@ const Pagination = ({ pageContext }) => {
             <div>
                 {nextPagePath && (
 
-                    <Link to={nextPagePath} rel="next" className="button is-primary text-sm font-medium hidden md:flex gh-portal-close">
+                    <Link to={nextPagePath} rel="next" className="button is-primary text-sm font-medium md:flex gh-portal-close">
                         {t(`Older_Posts`)} →
                     </Link>
                 )}
