@@ -33,7 +33,7 @@ const Page = ({ data, location }) => {
                         {page.custom_excerpt && <p className="post-excerpt mt-6 text-xl text-gray-500">{page.custom_excerpt}</p>}
                     </header>
 
-                    {page.feature_image && <ArticleFeaturedImage article={page} divClass="block mx-auto max-w-1000 mt-12" />}
+                    {page.feature_image && <ArticleFeaturedImage article={page} figureClass="block mx-auto max-w-1000 mt-12" />}
 
                     <div className="post-wrap max-w-1100 relative mx-auto">
                         <div id="post-body" className="post-body px-4 mx-auto max-w-740 relative" dangerouslySetInnerHTML={{ __html: page.html }}></div>
