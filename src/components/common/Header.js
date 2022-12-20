@@ -4,11 +4,11 @@ import { Navigation, SearchWidget, SideNav, NavigationDropDown } from '.'
 import { Link } from 'gatsby'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { StaticImage } from "gatsby-plugin-image"
-import { ThemeToggler } from 'gatsby-plugin-dark-mode'
+import ThemeToggler from "."
 import { relativeUrl } from "../../utils/relativeUrl"
 
 /**
-* Footer component
+* Header component
 *
 *
 */

@@ -197,7 +197,7 @@ module.exports = {
         },
         `gatsby-plugin-catch-links`,
         `gatsby-plugin-offline`,
-        `gatsby-plugin-dark-mode`,
+        //`gatsby-plugin-dark-mode`,
         {
             resolve: `gatsby-plugin-webfonts`,
             options: {
